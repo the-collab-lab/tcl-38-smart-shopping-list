@@ -21,7 +21,7 @@ Pairings will go as follows:
 #### Week 1, January 9 - 15
 
 1. Dana & Viviana
-2. Devarat & Shelley
+2. Devarat & Rafa
 
 #### Week 2, January 16 - 22
 
