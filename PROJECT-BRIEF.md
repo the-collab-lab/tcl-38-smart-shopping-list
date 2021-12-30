@@ -20,40 +20,40 @@ Pairings will go as follows:
 
 #### Week 1, January 9 - 15
 
-1. Dana & Viviana
-2. Devarat & Rafa
+1. Kristen & Chris
+2. Cynthia & Diyana
 
 #### Week 2, January 16 - 22
 
-1. Viviana & Devarat
-2. Dana & Rafa
+1. Chris & Cynthia
+2. Kristen & Diyana
 
 #### Week 3, January 23 - 29
 
-1. Devarat & Dana
-2. Rafa & Viviana
+1. Cynthia & Kristen
+2. Diyana & Chris
 
 #### Week 4, January 30 - February 5
 
-1. Dana & Viviana
-2. Devarat & Rafa
+1. Kristen & Chris
+2. Cynthia & Diyana
 
 #### Week 5, February 6 - 12
 
-1. Viviana & Devarat
-2. Dana & Rafa
+1. Chris & Cynthia
+2. Kristen & Diyana
 
 #### Week 6, February 13 - 19
 
-1. Devarat & Dana
-2. Rafa & Viviana
+1. Cynthia & Kristen
+2. Diyana & Chris
 
 #### Week 7, February 20 - 26
 
-1. Dana & Viviana
-2. Devarat & Rafa
+1. Kristen & Chris
+2. Cynthia & Diyana
 
 #### Week 8, February 27 - March 5
 
-1. Viviana & Devarat
-2. Dana & Rafa
+1. Chris & Cynthia
+2. Kristen & Diyana
