@@ -6,7 +6,10 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Cohort Participants
 
+- [Kristen Monnik](https://github.com/k-monnik) 🎻
+
 ## Mentors
+
 - [Lars Brekken](https://github.com/larsbrekken) 🏃
 
 ## Code of Conduct Contacts
