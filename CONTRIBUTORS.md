@@ -7,6 +7,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Cohort Participants
 
 - [Kristen Monnik](https://github.com/k-monnik) 🎻
+- [Diyana Mendoza-Price](https://github.com/diyanamendoza) 🐳
 
 ## Mentors
 
