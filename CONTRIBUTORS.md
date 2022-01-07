@@ -15,5 +15,9 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Mentors
 
 - [Lars Brekken](https://github.com/larsbrekken) 🏃
+- [April Leone](https://github.com/aprilleone) 🏜️
+
 
 ## Code of Conduct Contacts
+
+- [Stacie Taylor](https://github.com/stacietaylorcima)
