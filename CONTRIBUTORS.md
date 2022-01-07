@@ -10,6 +10,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Diyana Mendoza-Price](https://github.com/diyanamendoza)
   🐳
   [Cynthia Eddy](https://github.com/cynthiaeddy) 🏖️
+- [Chris Korsak](https://github.com/chriskorsak) 😎
 
 ## Mentors
 
