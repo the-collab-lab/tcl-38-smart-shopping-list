@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { collection, addDoc, getDocs } from '@firebase/firestore';
 import { db } from '../lib/firebase.js';
 
 const FirebaseTest = () => {
   const [item, setItem] = useState('');
   const [itemList, setItemList] = useState([]);
-  // const history = useHistory();
 
   useEffect(() => {
     const getItems = async () => {
@@ -14,7 +12,7 @@ const FirebaseTest = () => {
         const querySnapshot = await getDocs(collection(db, 'test-list'));
 
         const snapshotDocs = [];
-        // loop through snapshot and push each item to array
+        // loop through snapshot and push each doc to array
         querySnapshot.forEach((doc) => snapshotDocs.push(doc.data()));
         // set array into our ItemList state
         setItemList(snapshotDocs);
@@ -28,18 +26,17 @@ const FirebaseTest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const itemToAdd = { name: item, date: Date.now() };
+
     try {
-      const docRef = await addDoc(collection(db, 'test-list'), {
-        name: item,
-        date: Date.now(),
-      });
-      console.log(docRef.id + 'added to collection', docRef);
-      // history.push('/');
+      const docRef = await addDoc(collection(db, 'test-list'), itemToAdd);
+      console.log(docRef.id + 'added to collection', itemToAdd);
+      setItemList((prevItemList) => [...prevItemList, itemToAdd]);
     } catch (error) {
       console.log(error.message);
     }
   };
-  console.log('itemList', itemList);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
