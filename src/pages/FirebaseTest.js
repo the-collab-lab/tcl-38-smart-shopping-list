@@ -32,6 +32,7 @@ const FirebaseTest = () => {
       const docRef = await addDoc(collection(db, 'test-list'), itemToAdd);
       console.log(docRef.id + 'added to collection', itemToAdd);
       setItemList((prevItemList) => [...prevItemList, itemToAdd]);
+      setItem('');
     } catch (error) {
       console.log(error.message);
     }
