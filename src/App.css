@@ -10,6 +10,10 @@
 .main-content {
 }
 
+.active {
+  font-weight: bold;
+}
+
 .route-links {
   display: flex;
   flex-direction: column;
