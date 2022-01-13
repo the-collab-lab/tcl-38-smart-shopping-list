@@ -9,16 +9,6 @@ import {
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
 
-// const activeLinks = () => {
-//   const [activeLink, setActiveLink] = useState(null);
-//   const changeFont = (e, index) => {
-//     console.log({ e });
-//     setActiveLink(index);
-// //   };
-
-//   return
-// }
-
 function App() {
   return (
     <div className="App">
