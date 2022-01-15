@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </div>
         <div className="route-links">
-          <NavLink to="/" exact>
+          <NavLink to="/" end>
             Item List
           </NavLink>
           <NavLink to="/add-item">Add Item</NavLink>
