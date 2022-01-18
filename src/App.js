@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
       <Router>
         <div className="main-content">
           <Routes>
-            <Route element={<ItemList />} path="/" exact />
-            <Route element={<AddItem />} path="/add-item" />
+            <Route element={<Home />} exact path="/" />
+            <Route element={<ItemList />} path="/list" />
+            <Route element={<AddItem />} path="/add-item" /> */}
           </Routes>
         </div>
         <div className="route-links">
@@ -27,7 +29,6 @@ function App() {
           <NavLink to="/add-item">Add Item</NavLink>
         </div>
       </Router>
-      <FirebaseTest />
     </div>
   );
 }
