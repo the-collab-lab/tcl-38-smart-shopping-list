@@ -14,7 +14,6 @@ import Home from './components/Home';
 function App() {
   let token;
   token = localStorage.getItem('token');
-  console.log(token);
 
   return (
     <div className="App">
