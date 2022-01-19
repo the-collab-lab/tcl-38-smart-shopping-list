@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import FirebaseTest from './pages/FirebaseTest';
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,7 +26,6 @@ function App() {
           <NavLink to="/add-item">Add Item</NavLink>
         </div>
       </Router>
-      <FirebaseTest />
     </div>
   );
 }
