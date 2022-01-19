@@ -4,7 +4,7 @@ import { db } from '../lib/firebase.js';
 
 const AddItem = () => {
   const [itemName, setItemName] = useState('');
-  const [buyAgainTime, setBuyAgainTime] = useState(null);
+  const [buyAgainTime, setBuyAgainTime] = useState(7);
   const [successMessage, setSuccessMessage] = useState('');
 
   const itemToAdd = {
