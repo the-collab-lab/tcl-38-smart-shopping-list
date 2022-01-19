@@ -11,7 +11,7 @@ const AddItem = () => {
     name: itemName,
     'last purchased': null,
     'next purchase': Number(buyAgainTime),
-    token: 1234,
+    token: localStorage.getItem('token'),
   };
 
   useEffect(() => {

@@ -4,11 +4,10 @@ import { db } from '../lib/firebase.js';
 import { Link } from 'react-router-dom';
 
 const ItemList = () => {
-  const token = 1234;
-
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     const q = query(
       collection(db, 'shopping-list'),
       where('token', '==', token),
