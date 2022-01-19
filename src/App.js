@@ -8,8 +8,13 @@ import {
 } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
+import CreateNewList from './components/CreateNewList';
 
 function App() {
+  if (localStorage.getItem('list-token') === null) {
+    return <CreateNewList />;
+  }
+
   return (
     <div className="App">
       <Router>
