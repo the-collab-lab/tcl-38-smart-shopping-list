@@ -1,5 +1,5 @@
 import { addDoc, collection } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { db } from '../lib/firebase.js';
 
 const AddItem = () => {
@@ -14,12 +14,25 @@ const AddItem = () => {
     token: localStorage.getItem('token'),
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSuccessMessage('');
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [successMessage]);
+  const frequencyOptions = [
+    {
+      id: 'soon',
+      value: 7,
+      message: 'Soon',
+    },
+
+    {
+      id: 'kind-of-soon',
+      value: 14,
+      message: 'Kind of Soon',
+    },
+
+    {
+      id: 'not-soon',
+      value: 30,
+      message: 'Not Soon',
+    },
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,33 +61,22 @@ const AddItem = () => {
         />
         <fieldset>
           <legend>How soon will you buy this again?</legend>
-          <input
-            type="radio"
-            id="soon"
-            name="buyAgain"
-            value={7}
-            defaultChecked
-            onChange={({ target }) => setBuyAgainTime(target.value)}
-          />
-          <label htmlFor="soon">Soon</label>
 
-          <input
-            type="radio"
-            id="kind-of-soon"
-            name="buyAgain"
-            value={14}
-            onChange={({ target }) => setBuyAgainTime(target.value)}
-          />
-          <label htmlFor="kind-of-soon">Kind of Soon</label>
-
-          <input
-            type="radio"
-            id="not-soon"
-            name="buyAgain"
-            value={30}
-            onChange={({ target }) => setBuyAgainTime(target.value)}
-          />
-          <label htmlFor="not-soon">Not Soon</label>
+          {frequencyOptions.map(({ id, value, message }, index) => {
+            return (
+              <div key={index}>
+                <input
+                  type="radio"
+                  id={id}
+                  name="buyAgain"
+                  value={value}
+                  defaultChecked={!index}
+                  onChange={({ target }) => setBuyAgainTime(target.value)}
+                />
+                <label htmlFor={id}>{message}</label>
+              </div>
+            );
+          })}
         </fieldset>
 
         <button type="submit">Add Item</button>
