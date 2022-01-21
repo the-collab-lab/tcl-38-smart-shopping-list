@@ -4,16 +4,7 @@ import { db } from '../lib/firebase.js';
 
 const AddItem = () => {
   const [itemName, setItemName] = useState('');
-  const [buyAgainTime, setBuyAgainTime] = useState(7);
   const [successMessage, setSuccessMessage] = useState('');
-
-  const itemToAdd = {
-    name: itemName,
-    'last purchased': null,
-    'next purchase': Number(buyAgainTime),
-    token: localStorage.getItem('token'),
-  };
-
   const frequencyOptions = [
     {
       id: 'soon',
@@ -33,6 +24,15 @@ const AddItem = () => {
       message: 'Not Soon',
     },
   ];
+
+  const [buyAgainTime, setBuyAgainTime] = useState(frequencyOptions[0].value);
+
+  const itemToAdd = {
+    name: itemName,
+    'last purchased': null,
+    'next purchase': Number(buyAgainTime),
+    token: localStorage.getItem('token'),
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
