@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import FirebaseTest from './pages/FirebaseTest';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,25 +8,28 @@ import {
 } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
+import Home from './components/Home';
 
 function App() {
+  let token;
+  token = localStorage.getItem('token');
+
   return (
     <div className="App">
       <Router>
         <div className="main-content">
           <Routes>
-            <Route element={<ItemList />} path="/" exact />
+            {/* //later add conditional to be able to go to home page through navigation */}
+            <Route path="/" element={!token ? <Home /> : <ItemList />} />
+            <Route element={<ItemList />} path="/list" />
             <Route element={<AddItem />} path="/add-item" />
           </Routes>
         </div>
         <div className="route-links">
-          <NavLink to="/" end>
-            Item List
-          </NavLink>
+          <NavLink to="/list">Item List</NavLink>
           <NavLink to="/add-item">Add Item</NavLink>
         </div>
       </Router>
-      <FirebaseTest />
     </div>
   );
 }
