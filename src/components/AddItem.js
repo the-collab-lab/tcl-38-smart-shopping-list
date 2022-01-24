@@ -1,10 +1,16 @@
-import { addDoc, collection } from 'firebase/firestore';
-import { useState } from 'react';
+import {
+  addDoc,
+  collection,
+  query,
+  where,
+  onSnapshot,
+} from 'firebase/firestore';
+import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase.js';
 
 const AddItem = () => {
   const [itemName, setItemName] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [message, setMessage] = useState('');
   const frequencyOptions = [
     {
       id: 'soon',
@@ -34,15 +40,52 @@ const AddItem = () => {
     token: localStorage.getItem('token'),
   };
 
+  const [docs, setDocs] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const q = query(
+      collection(db, 'shopping-list'),
+      where('token', '==', token),
+    );
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setDocs(items);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const nameArray = docs.map((doc) => {
+    return doc.name
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@]/g, '')
+      .toLowerCase()
+      .trim();
+  });
+  console.log(nameArray);
+  let cleanItemName = itemName
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@]/g, '')
+    .toLowerCase()
+    .trim();
+  console.log(cleanItemName);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (nameArray.includes(cleanItemName)) {
+        throw new Error('item is included!');
+      }
+
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
       console.log(docRef.id);
-      setSuccessMessage(`Hurray! ${itemName} was added to the list.`);
+      setMessage(`Hurray! ${itemName} was added to the list.`);
       setItemName('');
     } catch (error) {
-      console.log(error.message);
+      setMessage(error.message);
     }
   };
 
@@ -82,7 +125,7 @@ const AddItem = () => {
         <button type="submit">Add Item</button>
       </form>
 
-      {successMessage && <p>{successMessage}</p>}
+      {message && <p>{message}</p>}
     </>
   );
 };
