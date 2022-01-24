@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
-import Home from './components/Home';
+import Home from './pages/Home';
 
 function App() {
   let token;
