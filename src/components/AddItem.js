@@ -1,14 +1,11 @@
-import {
-  addDoc,
-  collection,
-  query,
-  where,
-  onSnapshot,
-} from 'firebase/firestore';
-import { useState, useEffect } from 'react';
+import { addDoc, collection } from 'firebase/firestore';
+import { useState } from 'react';
 import { db } from '../lib/firebase.js';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
+import cleanData from '../utils/cleanData.js';
 
 const AddItem = () => {
+  const docs = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
   const frequencyOptions = [
@@ -40,46 +37,18 @@ const AddItem = () => {
     token: localStorage.getItem('token'),
   };
 
-  const [docs, setDocs] = useState([]);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const q = query(
-      collection(db, 'shopping-list'),
-      where('token', '==', token),
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setDocs(items);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
   const nameArray = docs.map((doc) => {
-    return doc.name
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@]/g, '')
-      .toLowerCase()
-      .trim();
+    return cleanData(doc.name);
   });
-  console.log(nameArray);
-  let cleanItemName = itemName
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@]/g, '')
-    .toLowerCase()
-    .trim();
-  console.log(cleanItemName);
+
+  let cleanItemName = cleanData(itemName);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (nameArray.includes(cleanItemName)) {
-        throw new Error('item is included!');
+        throw new Error('Item is already on your list!');
       }
-
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
       console.log(docRef.id);
       setMessage(`Hurray! ${itemName} was added to the list.`);
