@@ -47,7 +47,7 @@ const AddItem = () => {
     e.preventDefault();
     try {
       if (nameArray.includes(cleanItemName)) {
-        throw new Error('Item is already on your list!');
+        throw new Error(`${itemName} is already on the list!`);
       }
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
       console.log(docRef.id);
@@ -55,6 +55,7 @@ const AddItem = () => {
       setItemName('');
     } catch (error) {
       setMessage(error.message);
+      setItemName('');
     }
   };
 
