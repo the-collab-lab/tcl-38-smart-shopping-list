@@ -26,7 +26,7 @@ const Home = () => {
   const getUserToken = (e) => {
     e.preventDefault();
     if (userToken !== 'token' || userToken === '') {
-      alert('Token does not exist, please create a list.');
+      alert('Token does not exist, please try again or create a new list.');
       navigate('/');
       setUserToken('');
     }
