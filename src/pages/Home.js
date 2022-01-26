@@ -5,9 +5,7 @@ import {
   calculateEstimate,
 } from '@the-collab-lab/shopping-list-utils';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
-
 import { db } from '../lib/firebase.js';
-
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -23,12 +21,16 @@ const Home = () => {
     localStorage.setItem('token', userToken);
   };
 
+  const useAToken = userToken;
+
   const getUserToken = (e) => {
     e.preventDefault();
-    if (userToken === undefined || userToken === '') {
-      alert('Token does not exist, please create a list');
+    if (userToken !== 'token' || userToken === '') {
+      alert('Token does not exist, please create a list.');
+      navigate('/');
+      setUserToken('');
     }
-    const useAToken = userToken;
+
     const q = query(
       collection(db, 'shopping-list'),
       where('token', '==', userToken),
@@ -36,6 +38,7 @@ const Home = () => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         if (('token', '==', useAToken)) {
+          console.log(true);
           saveToken(useAToken);
           navigate('/list');
         }
@@ -51,7 +54,7 @@ const Home = () => {
       <h3>Welcome to your Smart Shopping list</h3>
       <button onClick={createToken}>Create a new list</button>
       <p>- or -</p>
-      <p>Join a existing Shopping List by entering a three word token</p>
+      <p>Join an existing shopping list by entering a three word token</p>
 
       <form>
         <label htmlFor="shared-token">Share Token</label>
