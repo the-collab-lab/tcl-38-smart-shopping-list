@@ -15,8 +15,7 @@ const Home = () => {
   const [userToken, setUserToken] = useState('');
 
   const createToken = () => {
-    let token;
-    token = localStorage.setItem('token', getToken());
+    localStorage.setItem('token', getToken());
     navigate('/list');
   };
 
@@ -25,7 +24,11 @@ const Home = () => {
     localStorage.setItem('token', userToken);
   };
 
-  const getUserToken = () => {
+  const getUserToken = (e) => {
+    e.preventDefault();
+    if (userToken === undefined || userToken === '') {
+      alert('Token does not exist, please create a list');
+    }
     const useAToken = userToken;
     console.log('useAToken', useAToken);
     const q = query(
@@ -52,17 +55,26 @@ const Home = () => {
       <button onClick={createToken}>Create a new list</button>
       <p>Join a existing Shopping List by entering a three word token</p>
 
-      <form onSubmit={getUserToken()}>
-        <label htmlFor="shared-token">Shared Token</label>
+      <form>
+        <label htmlFor="shared-token">Share Token</label>
+        <br />
         <input
+          style={{ marginTop: '10px', textAlign: 'center' }}
           id="shared-token"
           type="text"
           name="shared-token"
           value={userToken}
           placeholder="three word token"
-          onChange={({ target }) => setUserToken(target.value)}
-        />
-        <button type="submit">Join an existing list</button>
+          onChange={(e) => setUserToken(e.target.value)}
+        />{' '}
+        <br />
+        <button
+          type="submit"
+          onClick={getUserToken}
+          style={{ marginTop: '20px' }}
+        >
+          Join an existing list
+        </button>
       </form>
     </>
   );
