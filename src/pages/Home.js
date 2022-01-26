@@ -20,7 +20,6 @@ const Home = () => {
   };
 
   const saveToken = () => {
-    console.log('savetoken, userToken', userToken);
     localStorage.setItem('token', userToken);
   };
 
@@ -30,14 +29,12 @@ const Home = () => {
       alert('Token does not exist, please create a list');
     }
     const useAToken = userToken;
-    console.log('useAToken', useAToken);
     const q = query(
       collection(db, 'shopping-list'),
       where('token', '==', userToken),
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log('doc.data()', doc.data());
         if (('token', '==', useAToken)) {
           saveToken(useAToken);
           navigate('/list');
