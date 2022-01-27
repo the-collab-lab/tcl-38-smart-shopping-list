@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
   getToken,
-  words,
-  calculateEstimate,
+  //words,
+  //calculateEstimate,
 } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
@@ -11,28 +11,25 @@ const Home = () => {
   const navigate = useNavigate();
   const docs = useFirebaseSnapshot();
   const [userToken, setUserToken] = useState('');
+  const existingTokens = docs.map((doc) => doc.token);
 
   const createToken = () => {
     localStorage.setItem('token', getToken());
     navigate('/list');
   };
+
   const saveToken = () => {
     localStorage.setItem('token', userToken);
   };
+
   const getUserToken = (e) => {
     e.preventDefault();
-    //counting space between words
-    const str = userToken.split(' ').length - 1;
-    if (userToken === undefined || userToken === '' || str !== 2) {
+    if (existingTokens.includes(userToken) && userToken !== '') {
+      saveToken(userToken);
+      navigate('/list');
+    } else {
       alert('Token does not exist, please try again or create a new list.');
       setUserToken('');
-    } else {
-      docs.forEach((doc) => {
-        if (doc.token === userToken) {
-          saveToken(userToken);
-          navigate('/list');
-        }
-      });
     }
   };
 
