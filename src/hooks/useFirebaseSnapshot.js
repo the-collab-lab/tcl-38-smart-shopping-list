@@ -7,10 +7,11 @@ export default function useFirebaseSnapshot() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const q = query(
-      collection(db, 'shopping-list'),
-      where('token', '==', token),
-    );
+
+    const q = token
+      ? query(collection(db, 'shopping-list'), where('token', '==', token))
+      : query(collection(db, 'shopping-list'));
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
