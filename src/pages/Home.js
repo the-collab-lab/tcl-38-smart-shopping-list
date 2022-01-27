@@ -4,49 +4,36 @@ import {
   words,
   calculateEstimate,
 } from '@the-collab-lab/shopping-list-utils';
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
-import { db } from '../lib/firebase.js';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
+  const docs = useFirebaseSnapshot();
   const [userToken, setUserToken] = useState('');
 
   const createToken = () => {
     localStorage.setItem('token', getToken());
     navigate('/list');
   };
-
   const saveToken = () => {
     localStorage.setItem('token', userToken);
   };
-
-  const useAToken = userToken;
-
   const getUserToken = (e) => {
     e.preventDefault();
-    if (userToken !== 'token' || userToken === '') {
+    //counting space between words
+    const str = userToken.split(' ').length - 1;
+    if (userToken === undefined || userToken === '' || str !== 2) {
       alert('Token does not exist, please try again or create a new list.');
-      navigate('/');
       setUserToken('');
-    }
-
-    const q = query(
-      collection(db, 'shopping-list'),
-      where('token', '==', userToken),
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        if (('token', '==', useAToken)) {
-          console.log(true);
-          saveToken(useAToken);
+    } else {
+      docs.forEach((doc) => {
+        if (doc.token === userToken) {
+          saveToken(userToken);
           navigate('/list');
         }
       });
-    });
-    return () => {
-      unsubscribe();
-    };
+    }
   };
 
   return (
