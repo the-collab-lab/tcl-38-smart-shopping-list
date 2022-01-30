@@ -1,10 +1,13 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../lib/firebase.js';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
+import cleanData from '../utils/cleanData.js';
 
 const AddItem = () => {
+  const docs = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [message, setMessage] = useState('');
   const frequencyOptions = [
     {
       id: 'soon',
@@ -34,15 +37,25 @@ const AddItem = () => {
     token: localStorage.getItem('token'),
   };
 
+  const nameArray = docs.map((doc) => {
+    return cleanData(doc.name);
+  });
+
+  let cleanItemName = cleanData(itemName);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (nameArray.includes(cleanItemName)) {
+        throw new Error(`${itemName} is already on the list!`);
+      }
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
       console.log(docRef.id);
-      setSuccessMessage(`Hurray! ${itemName} was added to the list.`);
+      setMessage(`Hurray! ${itemName} was added to the list.`);
       setItemName('');
     } catch (error) {
-      console.log(error.message);
+      setMessage(error.message);
+      setItemName('');
     }
   };
 
@@ -82,7 +95,7 @@ const AddItem = () => {
         <button type="submit">Add Item</button>
       </form>
 
-      {successMessage && <p>{successMessage}</p>}
+      {message && <p>{message}</p>}
     </>
   );
 };
