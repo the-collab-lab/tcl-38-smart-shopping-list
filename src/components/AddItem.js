@@ -50,7 +50,6 @@ const AddItem = () => {
         throw new Error(`${itemName} is already on the list!`);
       }
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
-      console.log(docRef.id);
       setMessage(`Hurray! ${itemName} was added to the list.`);
       setItemName('');
     } catch (error) {
