@@ -1,41 +1,54 @@
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { db } from '../lib/firebase.js';
+import { useState } from 'react';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
+import cleanData from '../utils/cleanData.js';
 import { Link } from 'react-router-dom';
 
 const ItemList = () => {
-  const [docs, setDocs] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredResults, setFilteredResults] = useState('');
+  const { docs, loading } = useFirebaseSnapshot();
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const q = query(
-      collection(db, 'shopping-list'),
-      where('token', '==', token),
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setDocs(items);
+  const filterItems = (query) => {
+    setSearchInput(query);
+    const results = docs.filter((item) => {
+      const name = cleanData(item.name);
+      return name.includes(cleanData(query));
     });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+    setFilteredResults(results);
+  };
 
   return (
     <>
       <h2>Smart Shopping List</h2>
-      <ul>
-        {docs.length > 0 ? (
-          docs.map((item) => <li key={item.token + item.name}>{item.name}</li>)
-        ) : (
-          <p>
-            No items yet! <Link to="/add-item">Add one.</Link>
-          </p>
-        )}
-      </ul>
+      {loading ? (
+        <p>Loading...</p>
+      ) : docs.length ? (
+        <>
+          <form>
+            <label htmlFor="filter-items">Filter Items</label>
+            <input
+              id="filter-items"
+              type="text"
+              name="filter-items"
+              value={searchInput}
+              onChange={({ target }) => filterItems(target.value)}
+            />
+
+            <button onClick={() => setSearchInput('')}>Clear</button>
+          </form>
+          <ul>
+            {filteredResults
+              ? filteredResults.map((item, index) => (
+                  <li key={index}>{item.name}</li>
+                ))
+              : docs.map((item, index) => <li key={index}>{item.name}</li>)}
+          </ul>
+        </>
+      ) : (
+        <p>
+          No items yet! <Link to="/add-item">Add one.</Link>
+        </p>
+      )}
     </>
   );
 };
