@@ -5,6 +5,7 @@ import {
   onSnapshot,
   serverTimestamp,
   updateDoc,
+  doc,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../lib/firebase.js';
@@ -22,7 +23,7 @@ const ItemList = () => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
-        items.push(doc.data());
+        items.push({ data: doc.data(), id: doc.id });
       });
       setDocs(items);
     });
@@ -31,15 +32,26 @@ const ItemList = () => {
     };
   }, []);
 
+  const handleChecked = async (id) => {
+    const docRef = doc(db, 'shopping-list', id);
+    await updateDoc(docRef, {
+      'last purchased': serverTimestamp(),
+    });
+  };
+
   return (
     <>
       <h2>Smart Shopping List</h2>
       <ul>
         {docs.length > 0 ? (
           docs.map((item) => (
-            <li key={item.token + item.name}>
-              {' '}
-              <input type="checkbox" /> {item.name}
+            <li key={item.id}>
+              {/* {' '} */}
+              <input
+                type="checkbox"
+                onChange={() => handleChecked(item.id)}
+              />{' '}
+              {item.data.name}
             </li>
           ))
         ) : (
