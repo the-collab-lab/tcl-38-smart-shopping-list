@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 
 export default function useFirebaseSnapshot() {
   const [docs, setDocs] = useState([]);
+  const [loading, setLoading] = useState('');
 
   useEffect(() => {
+    setLoading(true);
     const token = localStorage.getItem('token');
 
     const q = token
@@ -18,11 +20,12 @@ export default function useFirebaseSnapshot() {
         items.push(doc.data());
       });
       setDocs(items);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
   }, []);
 
-  return docs;
+  return { docs, loading };
 }

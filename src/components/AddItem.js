@@ -6,7 +6,7 @@ import cleanData from '../utils/cleanData.js';
 // import {navigate} from './'
 
 const AddItem = () => {
-  const docs = useFirebaseSnapshot();
+  const { docs } = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
   const frequencyOptions = [
