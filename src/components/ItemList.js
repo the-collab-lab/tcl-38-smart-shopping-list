@@ -1,4 +1,11 @@
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  serverTimestamp,
+  updateDoc,
+} from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../lib/firebase.js';
 import { Link } from 'react-router-dom';
@@ -29,7 +36,12 @@ const ItemList = () => {
       <h2>Smart Shopping List</h2>
       <ul>
         {docs.length > 0 ? (
-          docs.map((item) => <li key={item.token + item.name}>{item.name}</li>)
+          docs.map((item) => (
+            <li key={item.token + item.name}>
+              {' '}
+              <input type="checkbox" /> {item.name}
+            </li>
+          ))
         ) : (
           <p>
             No items yet! <Link to="/add-item">Add one.</Link>
