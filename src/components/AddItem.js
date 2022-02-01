@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { db } from '../lib/firebase.js';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
+// import {navigate} from './'
 
 const AddItem = () => {
-  const { docs } = useFirebaseSnapshot();
+  const docs = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
   const frequencyOptions = [
