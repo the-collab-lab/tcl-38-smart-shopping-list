@@ -21,3 +21,9 @@
 ul {
   list-style-type: none;
 }
+.btn-filter {
+  display: none;
+}
+#filter-items {
+  margin: 0 20px;
+}

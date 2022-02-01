@@ -17,6 +17,11 @@ const ItemList = () => {
     setFilteredResults(results);
   };
 
+  const handleClear = () => {
+    setSearchInput('');
+    setFilteredResults();
+  };
+
   return (
     <>
       <h2>Smart Shopping List</h2>
@@ -26,6 +31,7 @@ const ItemList = () => {
         <>
           <form>
             <label htmlFor="filter-items">Filter Items</label>
+
             <input
               id="filter-items"
               type="text"
@@ -33,8 +39,13 @@ const ItemList = () => {
               value={searchInput}
               onChange={({ target }) => filterItems(target.value)}
             />
-
-            <button onClick={() => setSearchInput('')}>Clear</button>
+            <label htmlFor="btn">clear</label>
+            <input
+              type="btn"
+              id="btn"
+              className="btn-filter"
+              onClick={handleClear}
+            />
           </form>
           <ul>
             {filteredResults
