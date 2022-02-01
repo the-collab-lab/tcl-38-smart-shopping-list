@@ -39,6 +39,12 @@ const ItemList = () => {
     });
   };
 
+  // const wasPurchasedToday = ("last purchased") => {
+  // const oneDay = oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+  //   return (oneDay - serverTimestamp())
+
+  // }
+
   return (
     <>
       <h2>Smart Shopping List</h2>
@@ -50,6 +56,7 @@ const ItemList = () => {
               <input
                 type="checkbox"
                 onChange={() => handleChecked(item.id)}
+                checked={item.data['last purchased'] && true}
               />{' '}
               {item.data.name}
             </li>
