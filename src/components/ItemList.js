@@ -4,6 +4,7 @@ import {
   where,
   onSnapshot,
   serverTimestamp,
+  Timestamp,
   updateDoc,
   doc,
 } from 'firebase/firestore';
@@ -33,17 +34,25 @@ const ItemList = () => {
   }, []);
 
   const handleChecked = async (id) => {
+    //console.log used for testing checked item and manipulating last purchased time in db
+    console.log(id);
     const docRef = doc(db, 'shopping-list', id);
     await updateDoc(docRef, {
       'last purchased': serverTimestamp(),
     });
   };
 
-  // const wasPurchasedToday = ("last purchased") => {
-  // const oneDay = oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-  //   return (oneDay - serverTimestamp())
-
-  // }
+  const within24Hours = (item) => {
+    // Seconds in 24 hours
+    // 60 x 60 x 24 = 86400
+    const now = Timestamp.now();
+    if (item.data['last purchased']) {
+      if (now.seconds - item.data['last purchased'].seconds < 86400) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   return (
     <>
@@ -52,11 +61,13 @@ const ItemList = () => {
         {docs.length > 0 ? (
           docs.map((item) => (
             <li key={item.id}>
-              {/* {' '} */}
+              {' '}
               <input
+                aria-label="purchase item"
                 type="checkbox"
                 onChange={() => handleChecked(item.id)}
-                checked={item.data['last purchased'] && true}
+                checked={within24Hours(item)}
+                disabled={within24Hours(item)}
               />{' '}
               {item.data.name}
             </li>
