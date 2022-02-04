@@ -11,7 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
   const docs = useFirebaseSnapshot();
   const [userToken, setUserToken] = useState('');
-  const existingTokens = docs.map((doc) => doc.token);
+  const existingTokens = docs.map((doc) => doc.data.token);
 
   const createToken = () => {
     localStorage.setItem('token', getToken());

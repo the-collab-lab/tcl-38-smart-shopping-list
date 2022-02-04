@@ -38,7 +38,7 @@ const AddItem = () => {
   };
 
   const nameArray = docs.map((doc) => {
-    return cleanData(doc.name);
+    return cleanData(doc.data.name);
   });
 
   let cleanItemName = cleanData(itemName);

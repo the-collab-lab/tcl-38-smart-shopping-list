@@ -1,37 +1,10 @@
-import {
-  collection,
-  query,
-  where,
-  onSnapshot,
-  serverTimestamp,
-  Timestamp,
-  updateDoc,
-  doc,
-} from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { serverTimestamp, Timestamp, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../lib/firebase.js';
 import { Link } from 'react-router-dom';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 
 const ItemList = () => {
-  const [docs, setDocs] = useState([]);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const q = query(
-      collection(db, 'shopping-list'),
-      where('token', '==', token),
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push({ data: doc.data(), id: doc.id });
-      });
-      setDocs(items);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  const docs = useFirebaseSnapshot();
 
   const handleChecked = async (id) => {
     //console.log used for testing checked item and manipulating last purchased time in db
