@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { db } from '../lib/firebase.js';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
-// import {navigate} from './'
 
 const AddItem = () => {
   const { docs } = useFirebaseSnapshot();

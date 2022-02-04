@@ -43,15 +43,16 @@ const ItemList = () => {
               type="text"
               name="filter-items"
               value={searchInput}
+              autoComplete="off"
               onChange={({ target }) => filterItems(target.value)}
             />
             <label htmlFor="btn">clear</label>
-            <input
-              type="btn"
+            <button
+              type="button"
               id="btn"
               className="btn-filter"
               onClick={handleClear}
-            />
+            ></button>
           </form>
           <ul>
             {filteredResults
