@@ -5,7 +5,7 @@ import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 
 const AddItem = () => {
-  const docs = useFirebaseSnapshot();
+  const { docs } = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
   const frequencyOptions = [
@@ -49,6 +49,7 @@ const AddItem = () => {
       if (nameArray.includes(cleanItemName)) {
         throw new Error(`${itemName} is already on the list!`);
       }
+
       const docRef = await addDoc(collection(db, 'shopping-list'), itemToAdd);
       setMessage(`Hurray! ${itemName} was added to the list.`);
       setItemName('');
