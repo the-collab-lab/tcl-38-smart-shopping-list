@@ -17,7 +17,7 @@ export default function useFirebaseSnapshot() {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
-        items.push(doc.data());
+        items.push({ data: doc.data(), id: doc.id });
       });
       setDocs(items);
       setLoading(false);
