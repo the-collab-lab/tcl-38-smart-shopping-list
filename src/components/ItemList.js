@@ -4,6 +4,7 @@ import { useState } from 'react';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.development';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -39,6 +40,12 @@ const ItemList = () => {
     });
     setFilteredResults(results);
   };
+
+  useEffect(() => {
+    if (searchInput) {
+      filterItems(searchInput);
+    }
+  }, [docs]);
 
   const handleClear = () => {
     setSearchInput('');
