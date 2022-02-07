@@ -1,4 +1,10 @@
-import { serverTimestamp, Timestamp, updateDoc, doc } from 'firebase/firestore';
+import {
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
 import { db } from '../lib/firebase.js';
 import { useState } from 'react';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
@@ -45,6 +51,17 @@ const ItemList = () => {
     setFilteredResults('');
   };
 
+  const handleDelete = async (id, name) => {
+    console.log(name);
+    const confirmation = window.confirm(
+      `Are you sure you want to delete ${name}?`,
+    );
+    if (confirmation) {
+      const docRef = doc(db, 'shopping-list', id);
+      await deleteDoc(docRef);
+    }
+  };
+
   return (
     <>
       <h2>Smart Shopping List</h2>
@@ -78,7 +95,7 @@ const ItemList = () => {
           </form>
           <ul>
             {filteredResults
-              ? filteredResults.map((item, index) => (
+              ? filteredResults.map((item) => (
                   <li key={item.id}>
                     {' '}
                     <input
@@ -89,9 +106,16 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    <button
+                      type="button"
+                      aria-label={`delete ${item.data.name}`}
+                      onClick={() => handleDelete(item.id, item.data.name)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))
-              : docs.map((item, index) => (
+              : docs.map((item) => (
                   <li key={item.id}>
                     {' '}
                     <input
@@ -102,6 +126,13 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    <button
+                      type="button"
+                      aria-label={`delete ${item.data.name}`}
+                      onClick={() => handleDelete(item.id, item.data.name)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))}
           </ul>
