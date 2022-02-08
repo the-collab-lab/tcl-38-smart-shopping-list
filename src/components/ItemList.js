@@ -10,12 +10,13 @@ const ItemList = () => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
 
-  const handleChecked = async (id) => {
+  const handleChecked = async (id, item) => {
     //console.log used for testing checked item and manipulating last purchased time in db
     console.log(id);
     const docRef = doc(db, 'shopping-list', id);
     await updateDoc(docRef, {
       'last purchased': serverTimestamp(),
+      'total purchases': (item.data['total purchases'] += 1),
     });
   };
 
@@ -84,7 +85,7 @@ const ItemList = () => {
                     <input
                       aria-label="purchase item"
                       type="checkbox"
-                      onChange={() => handleChecked(item.id)}
+                      onChange={() => handleChecked(item.id, item)}
                       checked={within24Hours(item)}
                       disabled={within24Hours(item)}
                     />{' '}
@@ -97,7 +98,7 @@ const ItemList = () => {
                     <input
                       aria-label="purchase item"
                       type="checkbox"
-                      onChange={() => handleChecked(item.id)}
+                      onChange={() => handleChecked(item.id, item)}
                       checked={within24Hours(item)}
                       disabled={within24Hours(item)}
                     />{' '}
