@@ -1,4 +1,4 @@
-import { addDoc, collection, Timestamp } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../lib/firebase.js';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
@@ -36,7 +36,6 @@ const AddItem = () => {
     'next purchase': Number(buyAgainTime),
     token: localStorage.getItem('token'),
     'total purchases': 0,
-    'created item': Timestamp.now(),
     'estimated purchase interval': 0,
   };
 

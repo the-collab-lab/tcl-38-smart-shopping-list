@@ -1,10 +1,10 @@
 import { serverTimestamp, Timestamp, updateDoc, doc } from 'firebase/firestore';
-import { db } from '../lib/firebase.js';
 import { useState } from 'react';
-import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
-import cleanData from '../utils/cleanData.js';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
+import { db } from '../lib/firebase.js';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
+import cleanData from '../utils/cleanData.js';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -12,29 +12,9 @@ const ItemList = () => {
   const [filteredResults, setFilteredResults] = useState('');
 
   const handleChecked = async (id, item) => {
-    console.log(
-      'last purchased,created item',
-      item.data['last purchased'].seconds,
-      item.data['created item'].seconds,
-      Math.round(
-        (item.data['last purchased'].seconds -
-          item.data['created item'].seconds) /
-          86400,
-      ),
-    );
-    // const daysSinceLastPurchased =
-    //   item.data['total purchases'] === 0
-    //     ? 0
-    //     : Math.round(
-    //         (item.data['last purchased'].seconds -
-    //           item.data['created item'].seconds) /
-    //           86400,
-    //     );
-    const daysSinceLastPurchased = Math.round(
-      (item.data['last purchased'].seconds -
-        item.data['created item'].seconds) /
-        86400,
-    );
+    const daysSinceLastPurchased = item.data['last purchased']
+      ? Math.round((Timestamp.now() - item.data['last purchased']) / 86400)
+      : 0;
 
     //console.log used for testing checked item and manipulating last purchased time in db
     // console.log(id);

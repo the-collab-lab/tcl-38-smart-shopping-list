@@ -10,13 +10,6 @@ import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
 import Home from './pages/Home';
 
-import {
-  getToken,
-  words,
-  calculateEstimate,
-} from '@the-collab-lab/shopping-list-utils';
-import { useNavigate } from 'react-router-dom';
-
 function App() {
   let token;
   token = localStorage.getItem('token');

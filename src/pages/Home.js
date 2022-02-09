@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import {
-  getToken,
-  //words,
-  //calculateEstimate,
-} from '@the-collab-lab/shopping-list-utils';
+import { getToken } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
 
