@@ -2,15 +2,19 @@ import { useState } from 'react';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
+import { useToken } from '../context/TokenContext.js';
 
 const Home = () => {
   const navigate = useNavigate();
   const { docs } = useFirebaseSnapshot();
   const [userToken, setUserToken] = useState('');
   const existingTokens = docs.map((doc) => doc.data.token);
+  const { setHasToken } = useToken();
 
   const createToken = () => {
-    localStorage.setItem('token', getToken());
+    const newToken = getToken();
+    localStorage.setItem('token', newToken);
+    setHasToken(newToken);
     navigate('/list');
   };
 
@@ -22,6 +26,7 @@ const Home = () => {
     e.preventDefault();
     if (existingTokens.includes(userToken) && userToken !== '') {
       saveToken(userToken);
+      setHasToken(userToken);
       navigate('/list');
     } else {
       alert('Token does not exist, please try again or create a new list.');

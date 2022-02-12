@@ -1,8 +1,14 @@
-import { serverTimestamp, Timestamp, updateDoc, doc } from 'firebase/firestore';
+import {
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
+import { db } from '../lib/firebase.js';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
-import { db } from '../lib/firebase.js';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 
@@ -32,10 +38,9 @@ const ItemList = () => {
 
   const within24Hours = (item) => {
     // Seconds in 24 hours
-    // 60 x 60 x 24 = 86400å
-    const now = Timestamp.now();
+    // 60 x 60 x 24 = 86400
     if (item.data['last purchased']) {
-      if (now.seconds - item.data['last purchased'].seconds < 86400) {
+      if (Timestamp.now().seconds - item.data['last purchased'].seconds < 86400) {
         return true;
       }
     }
@@ -54,6 +59,17 @@ const ItemList = () => {
   const handleClear = () => {
     setSearchInput('');
     setFilteredResults('');
+  };
+
+  const handleDelete = async (id, name) => {
+    console.log(name);
+    const confirmation = window.confirm(
+      `Are you sure you want to delete ${name}?`,
+    );
+    if (confirmation) {
+      const docRef = doc(db, 'shopping-list', id);
+      await deleteDoc(docRef);
+    }
   };
 
   return (
@@ -89,7 +105,7 @@ const ItemList = () => {
           </form>
           <ul>
             {filteredResults
-              ? filteredResults.map((item, index) => (
+              ? filteredResults.map((item) => (
                   <li key={item.id}>
                     {' '}
                     <input
@@ -100,9 +116,16 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    <button
+                      type="button"
+                      aria-label={`delete ${item.data.name}`}
+                      onClick={() => handleDelete(item.id, item.data.name)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))
-              : docs.map((item, index) => (
+              : docs.map((item) => (
                   <li key={item.id}>
                     {' '}
                     <input
@@ -113,6 +136,13 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    <button
+                      type="button"
+                      aria-label={`delete ${item.data.name}`}
+                      onClick={() => handleDelete(item.id, item.data.name)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))}
           </ul>
