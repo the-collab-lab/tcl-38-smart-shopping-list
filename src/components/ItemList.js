@@ -6,11 +6,12 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import { db } from '../lib/firebase.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
+
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -55,6 +56,12 @@ const ItemList = () => {
     });
     setFilteredResults(results);
   };
+
+  useEffect(() => {
+    if (searchInput) {
+      filterItems(searchInput);
+    }
+  }, [docs]);
 
   const handleClear = () => {
     setSearchInput('');
