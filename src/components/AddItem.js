@@ -35,6 +35,8 @@ const AddItem = () => {
     'last purchased': null,
     'next purchase': Number(buyAgainTime),
     token: localStorage.getItem('token'),
+    'total purchases': 0,
+    'estimated purchase interval': 0,
   };
 
   const nameArray = docs.map((doc) => {
