@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
-import { Link } from 'react-router-dom';
 
 
 const ItemList = () => {
