@@ -8,7 +8,6 @@ import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';
 import PrivateRoute from './components/PrivateRoute';
 
-
 function App() {
   let token;
   token = localStorage.getItem('token');
