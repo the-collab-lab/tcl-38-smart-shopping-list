@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
-
+import itemStatus from '../utils/itemStatus.js';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -41,7 +41,10 @@ const ItemList = () => {
     // Seconds in 24 hours
     // 60 x 60 x 24 = 86400
     if (item.data['last purchased']) {
-      if (Timestamp.now().seconds - item.data['last purchased'].seconds < 86400) {
+      if (
+        Timestamp.now().seconds - item.data['last purchased'].seconds <
+        86400
+      ) {
         return true;
       }
     }
