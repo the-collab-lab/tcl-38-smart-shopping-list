@@ -116,7 +116,13 @@ const ItemList = () => {
           <ul>
             {filteredResults
               ? filteredResults.map((item) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    aria-label={`Need to buy ${item.data.name} ${itemStatus(
+                      item,
+                    )}`}
+                    className={itemStatus(item).replace(/\s+/g, '')}
+                  >
                     {' '}
                     <input
                       aria-label="purchase item"
@@ -126,6 +132,7 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    {itemStatus(item)}
                     <button
                       type="button"
                       aria-label={`delete ${item.data.name}`}
@@ -136,7 +143,13 @@ const ItemList = () => {
                   </li>
                 ))
               : docs.map((item) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    aria-label={`Need to buy ${item.data.name} ${itemStatus(
+                      item,
+                    )}`}
+                    className={itemStatus(item).replace(/\s+/g, '')}
+                  >
                     {' '}
                     <input
                       aria-label="purchase item"
@@ -146,6 +159,7 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    {itemStatus(item)}
                     <button
                       type="button"
                       aria-label={`delete ${item.data.name}`}

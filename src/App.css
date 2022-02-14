@@ -30,3 +30,19 @@ ul {
 #filter-items {
   margin: 0 20px;
 }
+
+.soon {
+  color: red;
+}
+
+.kindofsoon {
+  color: orange;
+}
+
+.notsoon {
+  color: blue;
+}
+
+.inactive {
+  color: darkgray;
+}
