@@ -19,6 +19,22 @@ export default function useFirebaseSnapshot() {
       querySnapshot.forEach((doc) => {
         items.push({ data: doc.data(), id: doc.id });
       });
+      //sort items
+      items.sort((item1, item2) => {
+        let sortNum1, sortNum2;
+        //check to see which data we are using for sorting based on purchase history
+        //sort using next purchase data if < 1 purchases, sort using estimated purchase interval if 1 or more purchases
+        !item1.data['total purchases']
+          ? (sortNum1 = item1.data['next purchase'])
+          : (sortNum1 = item1.data['estimated purchase interval']);
+        !item2.data['total purchases']
+          ? (sortNum2 = item2.data['next purchase'])
+          : (sortNum2 = item2.data['estimated purchase interval']);
+        return (
+          //sort with sort nums, or if nums equal, sort based on alphabetical order of item name
+          sortNum1 - sortNum2 || item1.data.name.localeCompare(item2.data.name)
+        );
+      });
       setDocs(items);
       setLoading(false);
     });

@@ -81,7 +81,7 @@ const ItemList = () => {
       await deleteDoc(docRef);
     }
   };
-
+  // currently, we are rendering items with 'soon' as red, 'kind of soon' as orange, 'not soon' as blue, and 'inactive' as grey.
   return (
     <>
       <h2>Smart Shopping List</h2>
@@ -132,7 +132,6 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
-                    {itemStatus(item)}
                     <button
                       type="button"
                       aria-label={`delete ${item.data.name}`}
@@ -159,7 +158,9 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
-                    {itemStatus(item)}
+                    {/* {itemStatus(item)} */}
+                    {/* {' np: ' + item.data['next purchase']}
+                    {' epi: ' + item.data['estimated purchase interval']} */}
                     <button
                       type="button"
                       aria-label={`delete ${item.data.name}`}

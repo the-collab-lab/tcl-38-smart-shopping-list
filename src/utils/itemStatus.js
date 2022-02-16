@@ -21,4 +21,5 @@ export default function itemStatus(item) {
     if (item.data['estimated purchase interval'] <= 30) return 'kind of soon';
     if (item.data['estimated purchase interval'] > 30) return 'not soon';
   }
+  return 'no status';
 }
