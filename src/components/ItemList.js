@@ -32,7 +32,9 @@ const ItemList = () => {
         item.data['total purchases'],
       ),
       'last purchased': serverTimestamp(),
-      'total purchases': (item.data['total purchases'] += 1),
+      'total purchases': item.data['total purchases']
+        ? item.data['total purchases'] + 1
+        : 0,
     });
   };
 
