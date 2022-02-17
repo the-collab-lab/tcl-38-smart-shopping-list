@@ -2,7 +2,7 @@ import { Timestamp } from 'firebase/firestore';
 
 export default function itemStatus(item) {
   //no purchase history
-  if (!item.data['last purchased']) {
+  if (!item.data['total purchases']) {
     if (item.data['next purchase'] === 7) return 'soon';
     if (item.data['next purchase'] === 14) return 'kind of soon';
     if (item.data['next purchase'] === 30) return 'not soon';
