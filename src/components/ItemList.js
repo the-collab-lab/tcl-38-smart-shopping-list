@@ -118,9 +118,11 @@ const ItemList = () => {
               ? filteredResults.map((item) => (
                   <li
                     key={item.id}
-                    aria-label={`Need to buy ${item.data.name} ${itemStatus(
-                      item,
-                    )}`}
+                    aria-label={
+                      itemStatus(item) === 'inactive'
+                        ? `${item.data.name} is inactive`
+                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
+                    }
                     className={itemStatus(item).replace(/\s+/g, '')}
                   >
                     {' '}
@@ -144,9 +146,11 @@ const ItemList = () => {
               : docs.map((item) => (
                   <li
                     key={item.id}
-                    aria-label={`Need to buy ${item.data.name} ${itemStatus(
-                      item,
-                    )}`}
+                    aria-label={
+                      itemStatus(item) === 'inactive'
+                        ? `${item.data.name} is inactive`
+                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
+                    }
                     className={itemStatus(item).replace(/\s+/g, '')}
                   >
                     {' '}
