@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
-
+import itemStatus from '../utils/itemStatus.js';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -41,7 +41,10 @@ const ItemList = () => {
     // Seconds in 24 hours
     // 60 x 60 x 24 = 86400
     if (item.data['last purchased']) {
-      if (Timestamp.now().seconds - item.data['last purchased'].seconds < 86400) {
+      if (
+        Timestamp.now().seconds - item.data['last purchased'].seconds <
+        86400
+      ) {
         return true;
       }
     }
@@ -78,7 +81,7 @@ const ItemList = () => {
       await deleteDoc(docRef);
     }
   };
-
+  // currently, we are rendering items with 'soon' as red, 'kind of soon' as orange, 'not soon' as blue, and 'inactive' as grey.
   return (
     <>
       <h2>Smart Shopping List</h2>
@@ -113,7 +116,15 @@ const ItemList = () => {
           <ul>
             {filteredResults
               ? filteredResults.map((item) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    aria-label={
+                      itemStatus(item) === 'inactive'
+                        ? `${item.data.name} is inactive`
+                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
+                    }
+                    className={itemStatus(item).replace(/\s+/g, '')}
+                  >
                     {' '}
                     <input
                       aria-label="purchase item"
@@ -133,7 +144,15 @@ const ItemList = () => {
                   </li>
                 ))
               : docs.map((item) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    aria-label={
+                      itemStatus(item) === 'inactive'
+                        ? `${item.data.name} is inactive`
+                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
+                    }
+                    className={itemStatus(item).replace(/\s+/g, '')}
+                  >
                     {' '}
                     <input
                       aria-label="purchase item"
@@ -143,6 +162,9 @@ const ItemList = () => {
                       disabled={within24Hours(item)}
                     />{' '}
                     {item.data.name}
+                    {/* {itemStatus(item)} */}
+                    {/* {' np: ' + item.data['next purchase']}
+                    {' epi: ' + item.data['estimated purchase interval']} */}
                     <button
                       type="button"
                       aria-label={`delete ${item.data.name}`}
