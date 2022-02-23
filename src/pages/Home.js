@@ -36,18 +36,21 @@ const Home = () => {
 
   return (
     <>
-      <h3 className="text-2xl text-purple-800">
-        Welcome to your Smart Shopping list
-      </h3>
-      <button onClick={createToken}>Create a new list</button>
-      <p>- or -</p>
-      <p>Join an existing shopping list by entering a three word token</p>
+      {/* logo goes here */}
+      <button className=" uppercase bg-black text-white" onClick={createToken}>
+        Create a new list
+      </button>
+      {/* or image goes here */}
+
+      <p>Join an existing shopping list by entering a</p>
 
       <form>
-        <label htmlFor="shared-token">Share Token</label>
+        <label htmlFor="shared-token" style={{ color: 'transparent' }}>
+          Share Token
+        </label>
         <br />
         <input
-          style={{ marginTop: '10px', textAlign: 'center' }}
+          className=" uppercase bg-black text-white"
           id="shared-token"
           type="text"
           name="shared-token"
@@ -57,9 +60,9 @@ const Home = () => {
         />{' '}
         <br />
         <button
+          className=" uppercase bg-black text-white"
           type="submit"
           onClick={getUserToken}
-          style={{ marginTop: '20px' }}
         >
           Join an existing list
         </button>

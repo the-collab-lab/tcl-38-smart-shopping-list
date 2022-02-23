@@ -14,9 +14,9 @@ function App() {
 
   return (
     <TokenProvider>
-      <div className="App">
+      <div className="min-h-screen font-family-Amatic SC uppercase bg-black text-white text-center">
         <Router>
-          <div className="main-content">
+          <div className="container w-auto">
             <Routes>
               {/* //later add conditional to be able to go to home page through navigation */}
               <Route path="/" element={!token ? <Home /> : <ItemList />} />
