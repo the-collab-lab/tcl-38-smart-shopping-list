@@ -3,6 +3,8 @@ import { getToken } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
 import { useToken } from '../context/TokenContext.js';
+import logogrey from '../assets/logogrey.png';
+import orshade from '../assets/orshade.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,37 +38,43 @@ const Home = () => {
 
   return (
     <>
-      {/* logo goes here */}
-      <button className=" uppercase bg-black text-white" onClick={createToken}>
-        Create a new list
-      </button>
-      {/* or image goes here */}
+      <img src={logogrey} alt="logo" className="logo" />
+      <div className="home-container">
+        <div className="inner-container">
+          <button className="btn primary" onClick={createToken}>
+            <h4>Create a new list</h4>
+          </button>
+          <img src={orshade} className="or" alt="or" />
 
-      <p>Join an existing shopping list by entering a</p>
-
-      <form>
-        <label htmlFor="shared-token" style={{ color: 'transparent' }}>
-          Share Token
-        </label>
-        <br />
-        <input
-          className=" uppercase bg-black text-white"
-          id="shared-token"
-          type="text"
-          name="shared-token"
-          value={userToken}
-          placeholder="three word token"
-          onChange={(e) => setUserToken(e.target.value)}
-        />{' '}
-        <br />
-        <button
-          className=" uppercase bg-black text-white"
-          type="submit"
-          onClick={getUserToken}
-        >
-          Join an existing list
-        </button>
-      </form>
+          <h3 className="home">
+            Join an <br />
+            existing shopping list <br /> by entering a
+          </h3>
+          <form>
+            <label htmlFor="shared-token" style={{ color: 'transparent' }}>
+              Share Token
+            </label>
+            <br />
+            <input
+              className="input-field"
+              id="shared-token"
+              type="text"
+              name="shared-token"
+              value={userToken}
+              placeholder="three word token"
+              onChange={(e) => setUserToken(e.target.value)}
+            />{' '}
+            <br />
+            <button
+              type="submit"
+              className="btn primary existing-list"
+              onClick={getUserToken}
+            >
+              join the list
+            </button>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

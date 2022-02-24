@@ -14,30 +14,28 @@ function App() {
 
   return (
     <TokenProvider>
-      <div className="min-h-screen font-family-Amatic SC uppercase bg-black text-white text-center">
+      <div className="container">
         <Router>
-          <div className="container w-auto">
-            <Routes>
-              {/* //later add conditional to be able to go to home page through navigation */}
-              <Route path="/" element={!token ? <Home /> : <ItemList />} />
-              <Route
-                element={
-                  <PrivateRoute>
-                    <ItemList />
-                  </PrivateRoute>
-                }
-                path="/list"
-              />
-              <Route
-                element={
-                  <PrivateRoute>
-                    <AddItem />
-                  </PrivateRoute>
-                }
-                path="/add-item"
-              />
-            </Routes>
-          </div>
+          <Routes>
+            {/* //later add conditional to be able to go to home page through navigation */}
+            <Route path="/" element={!token ? <Home /> : <ItemList />} />
+            <Route
+              element={
+                <PrivateRoute>
+                  <ItemList />
+                </PrivateRoute>
+              }
+              path="/list"
+            />
+            <Route
+              element={
+                <PrivateRoute>
+                  <AddItem />
+                </PrivateRoute>
+              }
+              path="/add-item"
+            />
+          </Routes>
           <Nav />
         </Router>
       </div>

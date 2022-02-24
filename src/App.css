@@ -1,3 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url('./assets/chalkboard.jpg');
+  background-size: cover;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-container {
+  width: 80%;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  margin-top: -27%;
+}
+
+.inner-container {
+  width: 99%;
+  border: 2px dotted rgba(255, 255, 255, 0.5);
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.logo {
+  width: 130%;
+  margin-right: 15%;
+  margin-top: -10%;
+}
+.or {
+  width: 90%;
+  margin-left: 3%;
+  margin-top: -7%;
+}
+h3.home {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top: -7%;
+  margin-bottom: 0;
+}
+h4 {
+  font-size: 22px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.btn.primary,
+.input-field {
+  font-family: 'Amatic SC', cursive;
+  font-size: 22px;
+  width: 60%;
+  background: none;
+  color: rgba(255, 255, 255, 0.8);
+  margin: auto;
+  margin-top: 10%;
+  padding: 10px;
+  box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0);
+}
+.btn.primary.existing-list {
+  margin-bottom: 10%;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.input-field {
+  width: 90%;
+  margin-top: -1%;
+  text-align: center;
+  color: white;
+  margin-bottom: 10%;
+}
+::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+.btn.primary:hover,
+.input-field:hover {
+  border: 1.5px solid #8daf81;
+}
+
+.input-field:active {
+  border: 1.5px solid rgba(255, 255, 255, 0);
+}
+
+/* ///////// old styles /////////// */
+
 .active {
   font-weight: bold;
 }
@@ -22,23 +125,29 @@ ul {
   margin: 0 20px;
 }
 
+/* ///////// updated with new colors, headings not words /////////// */
+
 .soon {
-  color: red;
+  color: #8ad66f;
 }
 
 .kindofsoon {
-  color: orange;
+  color: #f5fa0f;
 }
 
 .notsoon {
-  color: blue;
+  color: #4ec5f8;
 }
 
 .inactive {
-  color: darkgray;
+  color: #969696;
 }
-button,
-input {
-  font-family: 'Amatic SC', cursive;
-  font-size: 22px;
+
+/* ///////// colors not yet used  /////////// */
+
+.delete {
+  color: #f36546;
+}
+.inactive-words {
+  color: rgba(255, 255, 255, 0.6);
 }
