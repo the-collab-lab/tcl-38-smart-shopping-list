@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <h3 className="text-2xl text-purple-800">
+      <h3 className="text-2xl text-purple-800 text-Amatic">
         Welcome to your Smart Shopping list
       </h3>
       <button onClick={createToken}>Create a new list</button>
