@@ -39,7 +39,9 @@ const Home = () => {
       <h3 className="text-2xl text-purple-800 text-Amatic">
         Welcome to your Smart Shopping list
       </h3>
-      <button onClick={createToken}>Create a new list</button>
+      <button onClick={createToken} className="btn-primary">
+        Create a new list
+      </button>
       <p>- or -</p>
       <p>Join an existing shopping list by entering a three word token</p>
 
@@ -59,7 +61,7 @@ const Home = () => {
         <button
           type="submit"
           onClick={getUserToken}
-          style={{ marginTop: '20px' }}
+          className="btn-primary m-12"
         >
           Join an existing list
         </button>
