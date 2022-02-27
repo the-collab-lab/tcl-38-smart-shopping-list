@@ -58,7 +58,7 @@ const ItemList = () => {
       const name = cleanData(item.data.name);
       return name.includes(cleanData(query));
     });
-    setFilteredResults(results);
+    !query ? setFilteredResults('') : setFilteredResults(results);
   };
 
   useEffect(() => {
