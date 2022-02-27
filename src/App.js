@@ -13,36 +13,43 @@ function App() {
   token = localStorage.getItem('token');
 
   return (
-    <div className="h-screen text-white bg-cover bg-fixed bg-blue-900 m-0 mx-auto text-center">
-      <TokenProvider>
-        <div className="App">
-          <Router>
-            <div className="main-content">
-              <Routes>
-                {/* //later add conditional to be able to go to home page through navigation */}
-                <Route path="/" element={!token ? <Home /> : <ItemList />} />
-                <Route
-                  element={
-                    <PrivateRoute>
-                      <ItemList />
-                    </PrivateRoute>
-                  }
-                  path="/list"
-                />
-                <Route
-                  element={
-                    <PrivateRoute>
-                      <AddItem />
-                    </PrivateRoute>
-                  }
-                  path="/add-item"
-                />
-              </Routes>
+    <div className="box-border">
+      <div className="text-white bg-cover bg-fixed bg-chalkboard m-0 p-0 font-normal overflow-hidden mx-auto text-center font-Amatic">
+        <div className="h-screen w-screen flex flex-col items-center">
+          <TokenProvider>
+            <div className="App">
+              <Router>
+                <div className="main-content">
+                  <Routes>
+                    {/* //later add conditional to be able to go to home page through navigation */}
+                    <Route
+                      path="/"
+                      element={!token ? <Home /> : <ItemList />}
+                    />
+                    <Route
+                      element={
+                        <PrivateRoute>
+                          <ItemList />
+                        </PrivateRoute>
+                      }
+                      path="/list"
+                    />
+                    <Route
+                      element={
+                        <PrivateRoute>
+                          <AddItem />
+                        </PrivateRoute>
+                      }
+                      path="/add-item"
+                    />
+                  </Routes>
+                </div>
+                <Nav />
+              </Router>
             </div>
-            <Nav />
-          </Router>
+          </TokenProvider>
         </div>
-      </TokenProvider>
+      </div>
     </div>
   );
 }

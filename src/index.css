@@ -12,7 +12,7 @@
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-transparent font-Amatic text-white text-lg border-solid border-2 border-white ring-2 ring-white text-center;
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl  text-center cursor-pointer  hover:border-2 hover:border-green-500/60 active:font-bold;
   }
 }
 
