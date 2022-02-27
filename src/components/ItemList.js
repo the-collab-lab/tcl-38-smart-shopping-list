@@ -12,6 +12,7 @@ import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
+import Item from './Item.js';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -116,63 +117,22 @@ const ItemList = () => {
           <ul>
             {filteredResults
               ? filteredResults.map((item) => (
-                  <li
-                    key={item.id}
-                    aria-label={
-                      itemStatus(item) === 'inactive'
-                        ? `${item.data.name} is inactive`
-                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
-                    }
-                    className={itemStatus(item).replace(/\s+/g, '')}
-                  >
-                    {' '}
-                    <input
-                      aria-label="purchase item"
-                      type="checkbox"
-                      onChange={() => handleChecked(item.id, item)}
-                      checked={within24Hours(item)}
-                      disabled={within24Hours(item)}
-                    />{' '}
-                    {item.data.name}
-                    <button
-                      type="button"
-                      aria-label={`delete ${item.data.name}`}
-                      onClick={() => handleDelete(item.id, item.data.name)}
-                    >
-                      Delete
-                    </button>
-                  </li>
+                  <Item
+                    item={item}
+                    handleChecked={handleChecked}
+                    handleDelete={handleDelete}
+                    within24Hours={within24Hours}
+                    itemStatus={itemStatus}
+                  />
                 ))
               : docs.map((item) => (
-                  <li
-                    key={item.id}
-                    aria-label={
-                      itemStatus(item) === 'inactive'
-                        ? `${item.data.name} is inactive`
-                        : `Need to buy ${item.data.name} ${itemStatus(item)}`
-                    }
-                    className={itemStatus(item).replace(/\s+/g, '')}
-                  >
-                    {' '}
-                    <input
-                      aria-label="purchase item"
-                      type="checkbox"
-                      onChange={() => handleChecked(item.id, item)}
-                      checked={within24Hours(item)}
-                      disabled={within24Hours(item)}
-                    />{' '}
-                    {item.data.name}
-                    {/* {itemStatus(item)} */}
-                    {/* {' np: ' + item.data['next purchase']}
-                    {' epi: ' + item.data['estimated purchase interval']} */}
-                    <button
-                      type="button"
-                      aria-label={`delete ${item.data.name}`}
-                      onClick={() => handleDelete(item.id, item.data.name)}
-                    >
-                      Delete
-                    </button>
-                  </li>
+                  <Item
+                    item={item}
+                    handleChecked={handleChecked}
+                    handleDelete={handleDelete}
+                    within24Hours={within24Hours}
+                    itemStatus={itemStatus}
+                  />
                 ))}
           </ul>
         </>
