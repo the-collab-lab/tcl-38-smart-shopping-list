@@ -7,7 +7,8 @@ module.exports = {
       },
       backgroundImage: {
         chalkboard:
-          "url('/Users/kristenmonnik/Documents/Dev_Stuff/Projects/collab-lab/smart-shopping-list/tcl-38-smart-shopping-list/src/assets/chalkboard.jpg')",
+          // "url('/Users/kristenmonnik/Documents/Dev_Stuff/Projects/collab-lab/smart-shopping-list/tcl-38-smart-shopping-list/src/assets/chalkboard.jpg')",
+          "url('./assets/chalkboard.jpg')",
       },
       boxShadow: {
         '3xl': '0px 0px 4px 4px rgba(255, 255, 255, 0.3)',
