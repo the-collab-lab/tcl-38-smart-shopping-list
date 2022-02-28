@@ -3,14 +3,11 @@ import { useState } from 'react';
 import { db } from '../lib/firebase.js';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
-import Nav from './Nav';
-import logoS from '../assets/logogreyS.png';
 
 const AddItem = () => {
   const { docs } = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
-  const [currentPage, setCurrentPage] = useState('list');
   const frequencyOptions = [
     {
       id: 'soon',
@@ -66,49 +63,41 @@ const AddItem = () => {
 
   return (
     <>
-      <img
-        src={logoS}
-        alt="Logo: Welcome to Your Smart Shopping List"
-        className="logo"
-      />
-      <div className="outer-box">
-        <div className="inner-box">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="item-name">Item Name</label>
-            <input
-              required
-              id="item-name"
-              type="text"
-              name="item-name"
-              value={itemName}
-              onChange={({ target }) => setItemName(target.value)}
-            />
-            <fieldset>
-              <legend>How soon will you buy this again?</legend>
+      <h2>Smart Shopping List</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="item-name">Item Name</label>
+        <input
+          required
+          id="item-name"
+          type="text"
+          name="item-name"
+          value={itemName}
+          onChange={({ target }) => setItemName(target.value)}
+        />
+        <fieldset>
+          <legend>How soon will you buy this again?</legend>
 
-              {frequencyOptions.map(({ id, value, message }, index) => {
-                return (
-                  <div key={index}>
-                    <input
-                      type="radio"
-                      id={id}
-                      name="buyAgain"
-                      value={value}
-                      defaultChecked={!index}
-                      onChange={({ target }) => setBuyAgainTime(target.value)}
-                    />
-                    <label htmlFor={id}>{message}</label>
-                  </div>
-                );
-              })}
-            </fieldset>
+          {frequencyOptions.map(({ id, value, message }, index) => {
+            return (
+              <div key={index}>
+                <input
+                  type="radio"
+                  id={id}
+                  name="buyAgain"
+                  value={value}
+                  defaultChecked={!index}
+                  onChange={({ target }) => setBuyAgainTime(target.value)}
+                />
+                <label htmlFor={id}>{message}</label>
+              </div>
+            );
+          })}
+        </fieldset>
 
-            <button type="submit">Add Item</button>
-          </form>
-          <Nav currentPage={currentPage} />
-          {message && <p>{message}</p>}
-        </div>
-      </div>
+        <button type="submit">Add Item</button>
+      </form>
+
+      {message && <p>{message}</p>}
     </>
   );
 };

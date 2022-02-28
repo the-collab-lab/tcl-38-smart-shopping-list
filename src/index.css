@@ -16,9 +16,17 @@
   }
   .btn-secondary {
     @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
-    absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2;
+    absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
   }
-  .checkbox {
-    @apply w-6 h-6 rounded-full bg-none border-1 border-green-500;
+  .logo {
+    @apply max-h-72 mx-auto  ml-3 -mt-2 -mb-8;
+  }
+
+  .outer-box {
+    @apply w-4/5 mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
+  }
+
+  .inner-box {
+    @apply m-0.5 border-2 border-dotted relative border-white/50 h-[98.5%];
   }
 }

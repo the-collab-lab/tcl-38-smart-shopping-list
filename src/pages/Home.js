@@ -41,10 +41,10 @@ const Home = () => {
       <img
         src={logoS}
         alt="Logo: Welcome to Your Smart Shopping List"
-        className="max-w-screen max-h-72 mx-auto  ml-3 -mt-2 -mb-8"
+        className="logo"
       />
-      <div className="w-4/5 mx-auto border-solid border-white/50 -mt-22 mb-0 ">
-        <div className="flex text-center flex-col m-0.5 border-2 border-dotted border-[99%] border-white/50">
+      <div className="outer-box">
+        <div className="inner-box">
           <button onClick={createToken} className="btn-primary  mt-8">
             Create a new list
           </button>

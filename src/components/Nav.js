@@ -10,11 +10,11 @@ export default function Nav(props) {
         <>
           {props.currentPage === 'item-list' ? (
             <NavLink to="/add-item" className="btn-secondary  list">
-              Item List
+              Add Item
             </NavLink>
           ) : (
-            <NavLink to="/list" className="btn-secondary  mt-20 mb-8 add-item">
-              Add Item
+            <NavLink to="/list" className="btn-secondary   add-item">
+              Item List
             </NavLink>
           )}
         </>

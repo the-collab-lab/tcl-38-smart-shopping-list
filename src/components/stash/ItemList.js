@@ -92,10 +92,16 @@ const ItemList = () => {
       <img
         src={logoS}
         alt="Logo: Welcome to Your Smart Shopping List"
-        className="logo"
+        className="max-w-screen max-h-72 mx-auto  ml-3 -mt-2 -mb-8"
       />
-      <div className="outer-box">
-        <div className="inner-box">
+      <div
+        className="w-4/5 mx-auto border-solid border-white/50  absolute
+      left-1/2 transform -translate-x-1/2 top-1/2 -mt-40
+
+
+      h-3/5"
+      >
+        <div className="flex text-center flex-col m-0.5 border-2 border-dotted border-[99%] border-white/50">
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
