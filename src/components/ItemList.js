@@ -94,7 +94,13 @@ const ItemList = () => {
         alt="Logo: Welcome to Your Smart Shopping List"
         className="max-w-screen max-h-72 mx-auto  ml-3 -mt-2 -mb-8"
       />
-      <div className="w-4/5 mx-auto border-solid border-white/50 -mt-22 mb-0 -translate-y--2/3">
+      <div
+        className="w-4/5 mx-auto border-solid border-white/50  absolute
+      left-1/2 transform -translate-x-1/2 top-1/2 -mt-40
+
+
+      h-3/5"
+      >
         <div className="flex text-center flex-col m-0.5 border-2 border-dotted border-[99%] border-white/50">
           {loading && <p>Loading ...</p>}
 
@@ -120,7 +126,7 @@ const ItemList = () => {
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 float-left -mb-3 text-2xl w-2/4 m-auto mt-4"
+                  className="btn-primary text-white/80  ml-4 float-left -mb-3 text-2xl w-2/4 m-auto mt- relative"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
@@ -131,11 +137,11 @@ const ItemList = () => {
                 </label>
                 <button type="button" id="btn" onClick={handleClear}></button>
               </form>
-              <ul className="list-none">
+              <ul className="list-none p-0  ">
                 {filteredResults
                   ? filteredResults.map((item) => (
                       <li
-                        className="text-7xl"
+                        className=""
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
@@ -148,22 +154,20 @@ const ItemList = () => {
                       >
                         {' '}
                         <input
-                          className=""
                           aria-label="purchase item"
                           type="checkbox"
+                          className="checkbox"
                           onChange={() => handleChecked(item.id, item)}
                           checked={within24Hours(item)}
                           disabled={within24Hours(item)}
                         />{' '}
                         {item.data.name}
                         <button
-                          className=""
-                          type="button"
+                          className="checkbox checked"
+                          type="checkbox"
                           aria-label={`delete ${item.data.name}`}
                           onClick={() => handleDelete(item.id, item.data.name)}
-                        >
-                          Delete
-                        </button>
+                        ></button>
                       </li>
                     ))
                   : docs.map((item) => (
@@ -199,9 +203,9 @@ const ItemList = () => {
               </ul>
             </>
           )}
+          <Nav currentPage={currentPage} />
         </div>
       </div>
-      <Nav currentPage={currentPage} />
     </>
   );
 };

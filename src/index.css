@@ -14,4 +14,11 @@
   .btn-primary {
     @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
   }
+  .btn-secondary {
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
+    absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2;
+  }
+  .checkbox {
+    @apply w-6 h-6 rounded-full bg-none border-1 border-green-500;
+  }
 }
