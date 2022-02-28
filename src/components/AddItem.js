@@ -10,7 +10,8 @@ const AddItem = () => {
   const { docs } = useFirebaseSnapshot();
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
-  const [currentPage, setCurrentPage] = useState('list');
+  const currentPage = 'add-item';
+
   const frequencyOptions = [
     {
       id: 'soon',

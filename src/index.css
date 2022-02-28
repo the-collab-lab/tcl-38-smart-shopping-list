@@ -19,7 +19,7 @@
     absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
   }
   .logo {
-    @apply max-h-72 mx-auto  ml-3 -mt-2 -mb-8;
+    @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;
   }
 
   .outer-box {

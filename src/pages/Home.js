@@ -48,9 +48,15 @@ const Home = () => {
           <button onClick={createToken} className="btn-primary  mt-8">
             Create a new list
           </button>
-          <img src={or} alt="or" className="max-w-xl max-h-44 mx-auto -mt-3 " />
-          <span className="text-3xl text-white/80 -mt-8 uppercase tracking-wide">
-            Join an <br /> existing shopping list <br /> by entering a
+          <img
+            src={or}
+            alt="or"
+            className="max-h-44 mx-auto -mt-3 -ml-7 scale-75 -mb-6"
+          />
+
+          <span className="text-3xl text-white/80 uppercase tracking-wide">
+            Join an <br />
+            existing shopping list <br /> by entering a
           </span>
 
           <form>
@@ -71,7 +77,7 @@ const Home = () => {
             <button
               type="submit"
               onClick={getUserToken}
-              className="btn-primary uppercase mt-20 mb-8"
+              className="btn-secondary"
             >
               Join an existing list
             </button>

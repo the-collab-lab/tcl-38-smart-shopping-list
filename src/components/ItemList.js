@@ -20,8 +20,7 @@ const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
-  const [currentPage, setCurrentPage] = useState('item-list');
-  // const currentPage = 'item-list';
+  const currentPage = 'item-list';
 
   const handleChecked = async (id, item) => {
     const daysSinceLastPurchased = item.data['last purchased']

@@ -9,7 +9,7 @@ export default function Nav(props) {
       {hasToken && (
         <>
           {props.currentPage === 'item-list' ? (
-            <NavLink to="/add-item" className="btn-secondary  list">
+            <NavLink to="/add-item" className="btn-secondary  item-list">
               Add Item
             </NavLink>
           ) : (
