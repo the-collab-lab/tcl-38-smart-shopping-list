@@ -18,6 +18,9 @@
     @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
     absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
   }
+  .btn-third {
+    @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
+  }
   .logo {
     @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;
   }

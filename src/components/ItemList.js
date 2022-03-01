@@ -134,11 +134,10 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0  ">
+              <ul className="list-none p-0 ">
                 {filteredResults
                   ? filteredResults.map((item) => (
                       <li
-                        className=""
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
@@ -186,15 +185,15 @@ const ItemList = () => {
                           onChange={() => handleChecked(item.id, item)}
                           checked={within24Hours(item)}
                           disabled={within24Hours(item)}
+                          className=""
                         />{' '}
                         {item.data.name}
                         <button
+                          className="btn-third  "
                           type="button"
                           aria-label={`delete ${item.data.name}`}
                           onClick={() => handleDelete(item.id, item.data.name)}
-                        >
-                          Delete
-                        </button>
+                        ></button>
                       </li>
                     ))}
               </ul>

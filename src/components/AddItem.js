@@ -75,7 +75,7 @@ const AddItem = () => {
       />
       <div className="outer-box">
         <div className="inner-box">
-          <form onSubmit={handleSubmit} className="-mb-5">
+          <form onSubmit={handleSubmit} className="">
             <label
               htmlFor="item-name"
               className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
@@ -122,7 +122,7 @@ const AddItem = () => {
 
             <button
               type="submit"
-              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent"
+              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent -mb-8 "
             >
               Add Item
             </button>
