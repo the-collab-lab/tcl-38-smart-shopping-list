@@ -5,6 +5,7 @@ import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
+import question from '../assets/question.png';
 
 const AddItem = () => {
   const { docs } = useFirebaseSnapshot();
@@ -74,18 +75,27 @@ const AddItem = () => {
       />
       <div className="outer-box">
         <div className="inner-box">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="item-name">Item Name</label>
+          <form onSubmit={handleSubmit} className="-mb-5">
+            <label
+              htmlFor="item-name"
+              className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+            >
+              Add Item
+            </label>
             <input
               required
               id="item-name"
               type="text"
               name="item-name"
               value={itemName}
+              className="btn-primary text-white/80  text-2xl mt-9 w-[80%]"
               onChange={({ target }) => setItemName(target.value)}
             />
-            <fieldset>
-              <legend>How soon will you buy this again?</legend>
+            <fieldset className="border-0 p-0">
+              <legend className="text-sm text-white/80 uppercase tracking-wide pt-5 mb-4">
+                How soon will
+                <br /> you buy this again?
+              </legend>
 
               {frequencyOptions.map(({ id, value, message }, index) => {
                 return (
@@ -94,18 +104,34 @@ const AddItem = () => {
                       type="radio"
                       id={id}
                       name="buyAgain"
+                      className="invisible"
                       value={value}
                       defaultChecked={!index}
                       onChange={({ target }) => setBuyAgainTime(target.value)}
                     />
-                    <label htmlFor={id}>{message}</label>
+                    <label
+                      htmlFor={id}
+                      className="text 1xl uppercase tracking-[1em] leading-10"
+                    >
+                      {message}
+                    </label>
                   </div>
                 );
               })}
             </fieldset>
 
-            <button type="submit">Add Item</button>
+            <button
+              type="submit"
+              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent"
+            >
+              Add Item
+            </button>
           </form>
+          <img
+            src={question}
+            alt="question mark"
+            className="max-h-40 -mt-40 scale-75"
+          />
           <Nav currentPage={currentPage} />
           {message && <p>{message}</p>}
         </div>

@@ -85,7 +85,6 @@ const ItemList = () => {
       await deleteDoc(docRef);
     }
   };
-  console.log('in itemlist, nav', <Nav />, 'currentPage', currentPage);
   return (
     <>
       <img
@@ -108,7 +107,7 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-black pr-5 pl-5 -mt-12 "
+                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
                 >
                   Filter Items
                 </label>
@@ -119,16 +118,21 @@ const ItemList = () => {
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 float-left -mb-3 text-2xl w-2/4 m-auto mt- relative"
+                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[5%]"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80  ml-4 float-right -mb-3 text-2xl w-1/6 m-auto mt-4 mr-4"
+                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[13%] m-auto mr-5 mt-[5%] "
                 >
                   clear
                 </label>
-                <button type="button" id="btn" onClick={handleClear}></button>
+                <button
+                  type="button"
+                  className="invisible"
+                  id="btn"
+                  onClick={handleClear}
+                ></button>
               </form>
               <ul className="list-none p-0  ">
                 {filteredResults
