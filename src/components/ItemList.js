@@ -9,11 +9,11 @@ import { db } from '../lib/firebase.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
+import FlipMove from 'react-flip-move';
 import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
-
 import logoS from '../assets/logogreyS.png';
 
 const ItemList = () => {
@@ -61,7 +61,7 @@ const ItemList = () => {
       const name = cleanData(item.data.name);
       return name.includes(cleanData(query));
     });
-    setFilteredResults(results);
+    !query ? setFilteredResults('') : setFilteredResults(results);
   };
 
   useEffect(() => {
@@ -107,95 +107,104 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
                 >
                   Filter Items
                 </label>
-                <br />
                 <input
                   id="filter-items"
                   type="text"
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[5%]"
+                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[13%] m-auto mr-5 mt-[5%] "
+                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>
                 <button
                   type="button"
-                  className="invisible"
                   id="btn"
+                  className="invisible"
                   onClick={handleClear}
                 ></button>
               </form>
               <ul className="list-none p-0 ">
-                {filteredResults
-                  ? filteredResults.map((item) => (
-                      <li
-                        key={item.id}
-                        aria-label={
-                          itemStatus(item) === 'inactive'
-                            ? `${item.data.name} is inactive`
-                            : `Need to buy ${item.data.name} ${itemStatus(
-                                item,
-                              )}`
-                        }
-                        className={itemStatus(item).replace(/\s+/g, '')}
-                      >
-                        {' '}
-                        <input
-                          aria-label="purchase item"
-                          type="checkbox"
-                          className="checkbox"
-                          onChange={() => handleChecked(item.id, item)}
-                          checked={within24Hours(item)}
-                          disabled={within24Hours(item)}
-                        />{' '}
-                        {item.data.name}
-                        <button
-                          className="checkbox checked"
-                          type="checkbox"
-                          aria-label={`delete ${item.data.name}`}
-                          onClick={() => handleDelete(item.id, item.data.name)}
-                        ></button>
-                      </li>
-                    ))
-                  : docs.map((item) => (
-                      <li
-                        key={item.id}
-                        aria-label={
-                          itemStatus(item) === 'inactive'
-                            ? `${item.data.name} is inactive`
-                            : `Need to buy ${item.data.name} ${itemStatus(
-                                item,
-                              )}`
-                        }
-                        className={itemStatus(item).replace(/\s+/g, '')}
-                      >
-                        {' '}
-                        <input
-                          aria-label="purchase item"
-                          type="checkbox"
-                          onChange={() => handleChecked(item.id, item)}
-                          checked={within24Hours(item)}
-                          disabled={within24Hours(item)}
-                          className=""
-                        />{' '}
-                        {item.data.name}
-                        <button
-                          className="btn-third  "
-                          type="button"
-                          aria-label={`delete ${item.data.name}`}
-                          onClick={() => handleDelete(item.id, item.data.name)}
-                        ></button>
-                      </li>
-                    ))}
+                <FlipMove
+                  delay={100}
+                  duration={500}
+                  staggerDelayBy={20}
+                  enterAnimation={'elevator'}
+                  leaveAnimation={'elevator'}
+                >
+                  {filteredResults
+                    ? filteredResults.map((item) => (
+                        <li
+                          key={item.id}
+                          aria-label={
+                            itemStatus(item) === 'inactive'
+                              ? `${item.data.name} is inactive`
+                              : `Need to buy ${item.data.name} ${itemStatus(
+                                  item,
+                                )}`
+                          }
+                          className={itemStatus(item).replace(/\s+/g, '')}
+                        >
+                          {' '}
+                          <input
+                            aria-label="purchase item"
+                            type="checkbox"
+                            onChange={() => handleChecked(item.id, item)}
+                            checked={within24Hours(item)}
+                            disabled={within24Hours(item)}
+                          />{' '}
+                          {item.data.name}
+                          <button
+                            className="checkbox checked"
+                            type="checkbox"
+                            aria-label={`delete ${item.data.name}`}
+                            onClick={() =>
+                              handleDelete(item.id, item.data.name)
+                            }
+                          ></button>
+                        </li>
+                      ))
+                    : docs.map((item) => (
+                        <li
+                          key={item.id}
+                          aria-label={
+                            itemStatus(item) === 'inactive'
+                              ? `${item.data.name} is inactive`
+                              : `Need to buy ${item.data.name} ${itemStatus(
+                                  item,
+                                )}`
+                          }
+                          className={itemStatus(item).replace(/\s+/g, '')}
+                        >
+                          {' '}
+                          <input
+                            aria-label="purchase item"
+                            type="checkbox"
+                            onChange={() => handleChecked(item.id, item)}
+                            checked={within24Hours(item)}
+                            disabled={within24Hours(item)}
+                          />{' '}
+                          {item.data.name}
+                          <button
+                            className="btn-third  "
+                            type="button"
+                            aria-label={`delete ${item.data.name}`}
+                            onClick={() =>
+                              handleDelete(item.id, item.data.name)
+                            }
+                          ></button>
+                        </li>
+                      ))}
+                </FlipMove>
               </ul>
             </>
           )}
