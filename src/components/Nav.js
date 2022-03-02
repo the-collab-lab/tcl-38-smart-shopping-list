@@ -6,7 +6,7 @@ export default function Nav() {
 
   return (
     <nav>
-      {' '}
+      <NavLink to="/about">About</NavLink>
       {hasToken && (
         <>
           <NavLink to="/list">Item List</NavLink>

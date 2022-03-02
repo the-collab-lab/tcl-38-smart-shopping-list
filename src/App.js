@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';
 import PrivateRoute from './components/PrivateRoute';
+import About from './pages/About';
 
 function App() {
   let token;
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               {/* //later add conditional to be able to go to home page through navigation */}
               <Route path="/" element={!token ? <Home /> : <ItemList />} />
+              <Route path="/about" element={<About />} />
               <Route
                 element={
                   <PrivateRoute>
