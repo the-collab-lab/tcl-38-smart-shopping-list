@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useToken } from '../context/TokenContext';
 
-export default function Nav() {
+export default function Nav(props) {
   const { hasToken } = useToken();
 
   return (
@@ -9,8 +9,15 @@ export default function Nav() {
       <NavLink to="/about">About</NavLink>
       {hasToken && (
         <>
-          <NavLink to="/list">Item List</NavLink>
-          <NavLink to="/add-item">Add Item</NavLink>
+          {props.currentPage === 'item-list' ? (
+            <NavLink to="/add-item" className="btn-secondary  item-list">
+              Add Item
+            </NavLink>
+          ) : (
+            <NavLink to="/list" className="btn-secondary   add-item">
+              Item List
+            </NavLink>
+          )}
         </>
       )}
     </nav>
