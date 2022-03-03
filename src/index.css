@@ -2,16 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Amatic SC', cursive;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .btn-primary {
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
+  }
+  .btn-secondary {
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
+    absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
+  }
+  .btn-third {
+    @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
+  }
+  .logo {
+    @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;
+  }
+
+  .outer-box {
+    @apply w-4/5 mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
+  }
+
+  .inner-box {
+    @apply m-0.5 border-2 border-dotted relative border-white/50 h-[98.5%];
+  }
 }
