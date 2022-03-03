@@ -1,8 +1,6 @@
 import React from 'react';
 import logoS from '../assets/logogreyS.png';
 import { Link } from 'react-router-dom';
-import or from '../assets/orshade.png';
-import howToUse from '../assets/howToUse.png';
 
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
@@ -52,31 +50,31 @@ const HowToUse = () => {
             </h4>
             <h5 className="team-name ">Cynthia Eddy</h5>
             <a href="https://www.linkedin.com/in/cynthiaeddy">
-              <AiFillLinkedin className="text-white mr-3" />
+              <AiFillLinkedin className="text-white mr-3 hover:text-sky-400 " />
             </a>
             <a href="https://github.com/cynthiaeddy">
-              <AiFillGithub className="text-white mr-3" />
+              <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <h5 className="team-name">Chris Korsak</h5>
             <a href="https://www.linkedin.com/in/chriskorsak">
-              <AiFillLinkedin className="text-white mr-3" />
+              <AiFillLinkedin className="text-white mr-3 hover:text-sky-400 " />
             </a>
             <a href="https://github.com/chriskorsak">
-              <AiFillGithub className="text-white mr-3" />
+              <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <h5 className="team-name">Kristen Monnik</h5>
             <a href="https://www.linkedin.com/in/kristenmonnik/">
-              <AiFillLinkedin className="text-white mr-3" />
+              <AiFillLinkedin className="text-white mr-3 hover:text-sky-400 " />
             </a>
             <a href="https://github.com/k-monnik">
-              <AiFillGithub className="text-white mr-3" />
+              <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <h5 className="team-name">Diyana Mendoza-Price</h5>
             <a href="https://www.linkedin.com/in/diyana-mendoza-price/">
-              <AiFillLinkedin className="text-white mr-3" />
+              <AiFillLinkedin className="text-white mr-3 hover:text-sky-400 " />
             </a>
             <a href="https://github.com/diyanamendoza">
-              <AiFillGithub className="text-white mr-3" />
+              <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <Link to="/home" className="btn-secondary  ">
               home

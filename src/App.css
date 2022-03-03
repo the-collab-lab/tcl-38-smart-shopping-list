@@ -66,7 +66,15 @@ ul {
 .frontis:active {
   color: #8ad66f;
 }
-
+.yellow {
+  color: #f5fa0f;
+}
+.green {
+  color: #8ad66f;
+}
+.blue {
+  color: #4ec5f8;
+}
 /* ///////// colors not yet used  /////////// */
 
 .delete {
