@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
 import Home from './pages/Home';
+import Frontis from './components/Frontis';
+import HowToUse from './components/HowToUse';
+
 // import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,8 +24,10 @@ function App() {
               <Router>
                 <div className="main-content">
                   <Routes>
+                    <Route element={<Frontis />} path="/" />
+                    <Route element={<HowToUse />} path="/how-to-use" />
                     <Route
-                      path="/"
+                      path="/home"
                       element={!token ? <Home /> : <ItemList />}
                     />
                     <Route
