@@ -97,8 +97,17 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <p>
-              No items yet! <Link to="/add-item">Add some.</Link>
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
+              <div className="frontis-rule"></div>
+              No items yet!
+              <div className="frontis-rule"></div>
+              <Link
+                to="/add-item"
+                className="text-3xl text-white/80 uppercase tracking-wide no-underline mt-10 frontis"
+              >
+                Add some.
+              </Link>
+              <div className="frontis-rule"></div>
             </p>
           )}
 
