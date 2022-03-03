@@ -88,7 +88,7 @@ const AddItem = () => {
               type="text"
               name="item-name"
               value={itemName}
-              className="btn-primary text-white/80  text-2xl mt-9 w-[80%]"
+              className="btn-primary text-white/80 text-2xl mt-9 w-[80%]"
               onChange={({ target }) => setItemName(target.value)}
             />
             <fieldset className="border-0 p-0">

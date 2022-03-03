@@ -113,7 +113,7 @@ const ItemList = () => {
 
           {docs.length > 0 && (
             <>
-              <form>
+              <form className=" ">
                 <label
                   htmlFor="filter-items"
                   className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
@@ -142,7 +142,10 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
+              <ul className="list-none p-0 flex justify-between w-full flex-col">
+                <p className="text 1xl uppercase tracking-[1em] leading-10">
+                  head here
+                </p>
                 <FlipMove
                   delay={100}
                   duration={500}
@@ -161,7 +164,7 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
-                          // className={itemStatus(item).replace(/\s+/g, '')}
+                          className="flex justify-between text-2xl"
                         >
                           {' '}
                           <input
@@ -170,10 +173,11 @@ const ItemList = () => {
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}
                             disabled={within24Hours(item)}
+                            className="btn-delete"
                           />{' '}
                           {item.data.name}
                           <button
-                            className="checkbox checked"
+                            className="btn-delete"
                             type="checkbox"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -192,19 +196,20 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
-                          className={itemStatus(item).replace(/\s+/g, '')}
+                          className="text-sm text-white/80 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
-                          {' '}
+                          {/* flex justify-between  */}{' '}
                           <input
                             aria-label="purchase item"
                             type="checkbox"
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}
                             disabled={within24Hours(item)}
+                            className="checkbox opacity-0 absolute h-8 w-8 "
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third  "
+                            className="btn-delete justify-self-end "
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
