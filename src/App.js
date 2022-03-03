@@ -10,6 +10,7 @@ import HowToUse from './components/HowToUse';
 // import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';
 import PrivateRoute from './components/PrivateRoute';
+import About from './pages/About';
 
 function App() {
   let token;
@@ -30,6 +31,7 @@ function App() {
                       path="/home"
                       element={!token ? <Home /> : <ItemList />}
                     />
+                     <Route path="/about" element={<About />} />
                     <Route
                       element={
                         <PrivateRoute>
