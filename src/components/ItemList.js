@@ -116,7 +116,7 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
                 >
                   Filter Items
                 </label>
@@ -131,7 +131,7 @@ const ItemList = () => {
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+                  className="btn-primary text-white/60 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>
