@@ -1,13 +1,6 @@
-.App {
-  text-align: center;
-  display: grid;
-  grid-template-rows: 90vh, 10vh;
-  height: 100vh;
-  padding: 10px;
-  box-sizing: border-box;
-}
+/* ///////// old styles /////////// */
 
-.active {
+/* .active {
   font-weight: bold;
 }
 
@@ -29,20 +22,43 @@ ul {
 
 #filter-items {
   margin: 0 20px;
-}
+} */
+
+/* ///////// updated with new colors, headings not words /////////// */
 
 .soon {
-  color: red;
+  color: #8ad66f;
 }
 
 .kindofsoon {
-  color: orange;
+  color: #f5fa0f;
 }
 
 .notsoon {
-  color: blue;
+  color: #4ec5f8;
 }
 
 .inactive {
-  color: darkgray;
+  color: #969696;
+}
+
+.soon,
+.kindofsoon,
+.notsoon,
+.inactive {
+  font-size: 28px;
+  text-align: justify;
+  padding-left: 5%;
+  padding-right: 5%;
+  letter-spacing: 1px;
+  line-height: 1.65;
+}
+
+/* ///////// colors not yet used  /////////// */
+
+.delete {
+  color: #f36546;
+}
+.inactive-words {
+  color: rgba(255, 255, 255, 0.6);
 }

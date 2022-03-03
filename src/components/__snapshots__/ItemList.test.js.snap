@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display a list of items 1`] = `
+<div>
+  <h2>
+    Smart Shopping List
+  </h2>
+  <form>
+    <label
+      for="filter-items"
+    >
+      Filter Items
+    </label>
+    <input
+      autocomplete="off"
+      id="filter-items"
+      name="filter-items"
+      type="text"
+      value=""
+    />
+    <label
+      for="btn"
+    >
+      clear
+    </label>
+    <button
+      class="btn-filter"
+      id="btn"
+      type="button"
+    />
+  </form>
+  <ul>
+    <div
+      style="position: relative;"
+    >
+      <li
+        aria-label="Need to buy cereal kind of soon"
+        class="kindofsoon"
+      >
+         
+        <input
+          aria-label="purchase item"
+          type="checkbox"
+        />
+         
+        cereal
+        <button
+          aria-label="delete cereal"
+          type="button"
+        >
+          Delete
+        </button>
+      </li>
+      <li
+        aria-label="limes is inactive"
+        class="inactive"
+      >
+         
+        <input
+          aria-label="purchase item"
+          type="checkbox"
+        />
+         
+        limes
+        <button
+          aria-label="delete limes"
+          type="button"
+        >
+          Delete
+        </button>
+      </li>
+    </div>
+  </ul>
+</div>
+`;
