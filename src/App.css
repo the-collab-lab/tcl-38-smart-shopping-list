@@ -53,6 +53,11 @@ ul {
   letter-spacing: 1px;
   line-height: 1.65;
 }
+.frontis:hover,
+.frontis:active {
+  /* color: #8daf81; */
+  color: #8ad66f;
+}
 
 /* ///////// colors not yet used  /////////// */
 
