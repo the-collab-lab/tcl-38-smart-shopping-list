@@ -116,7 +116,7 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
                 >
                   Filter Items
                 </label>
@@ -161,7 +161,7 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
-                          className={itemStatus(item).replace(/\s+/g, '')}
+                          // className={itemStatus(item).replace(/\s+/g, '')}
                         >
                           {' '}
                           <input
