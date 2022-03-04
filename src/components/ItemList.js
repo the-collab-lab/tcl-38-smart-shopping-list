@@ -15,6 +15,7 @@ import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
+import green from '../assets/green.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -198,7 +199,7 @@ const ItemList = () => {
                           }
                           className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
-                          <div className="list">
+                          <div className="list flex">
                             <input
                               aria-label="purchase item"
                               type="checkbox"
@@ -207,7 +208,12 @@ const ItemList = () => {
                               disabled={within24Hours(item)}
                               className="checkbox opacity-0 absolute h-8 w-8 "
                             />{' '}
-                            <button className="btn-checkbox-soon"></button>
+                            <img
+                              src={green}
+                              className="fill-current hidden w-7 h-7 opacity-80"
+                              alt="green checkbox"
+                            />
+                            <div className="btn-checkbox-soon"></div>
                             {item.data.name}
                           </div>
                           <button

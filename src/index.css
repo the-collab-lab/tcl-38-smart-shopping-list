@@ -30,6 +30,12 @@
   .btn-checkbox-not-soon {
     @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-sky-400/60 mr-4;
   }
+  input:checked + div {
+    @apply hidden border-none opacity-0;
+  }
+  input:checked + img {
+    @apply block z-10;
+  }
 
   .logo {
     @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;
@@ -46,7 +52,7 @@
     @apply mx-auto border-3 border-dotted border-white/50 w-1 h-20 mb-[5%] mt-[5%] border-l-transparent border-t-transparent border-b-transparent;
   }
   .item-list-rule {
-    @apply mx-auto border-3 border-dotted border-white/50 w-[85%] h-20 mb-[5%] mt-[5%] border-l-transparent border-r-transparent border-b-transparent;
+    @apply mx-auto border-3 border-dotted border-white/50 w-[85%] h-1 mb-[5%] mt-[5%] border-l-transparent border-r-transparent border-b-transparent;
   }
 
   .how-to {
