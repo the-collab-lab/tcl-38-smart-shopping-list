@@ -6,7 +6,9 @@ export default function Nav(props) {
 
   return (
     <nav>
-      <NavLink to="/about">About</NavLink>
+      <NavLink to="/about" className="btn-primary">
+        About
+      </NavLink>
       {hasToken && (
         <>
           {props.currentPage === 'item-list' ? (
