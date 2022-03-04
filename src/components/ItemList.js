@@ -16,6 +16,7 @@ import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import green from '../assets/green.png';
+import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -143,9 +144,9 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <div className="mx-auto w-[80%] bg-transparent overflow-y-auto h-[80%] mt-[1%] scrollbar-hide">
+              <div className="mx-auto  bg-transparent overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
                 <ul className="list-none p-0 flex justify-between w-full flex-col">
-                  <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 mt-[5%]">
+                  <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 -mt-2">
                     soon
                   </p>
                   <FlipMove
@@ -231,6 +232,7 @@ const ItemList = () => {
                 </ul>
                 <div className="item-list-rule"></div>
               </div>
+              <img src={carrot} className="carrot" alt="down arrow" />
             </>
           )}
           <Nav currentPage={currentPage} />

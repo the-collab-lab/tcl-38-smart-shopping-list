@@ -61,4 +61,8 @@
   .team-name {
     @apply text-white/70 uppercase uppercase tracking-[.65em] text-base mb-3 leading-relaxed;
   }
+  .carrot {
+    @apply text-xl w-[45%] m-auto  bg-transparent
+    absolute left-1/2 transform -translate-x-[55%] top-[77%] -translate-y-1/2;
+  }
 }
