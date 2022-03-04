@@ -143,8 +143,8 @@ const ItemList = () => {
                 ></button>
               </form>
               <ul className="list-none p-0 flex justify-between w-full flex-col">
-                <p className="text 1xl uppercase tracking-[1em] leading-10">
-                  head here
+                <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400">
+                  soon
                 </p>
                 <FlipMove
                   delay={100}
@@ -207,11 +207,11 @@ const ItemList = () => {
                               disabled={within24Hours(item)}
                               className="checkbox opacity-0 absolute h-8 w-8 "
                             />{' '}
-                            <button className="btn-checkbox justify-self-end "></button>
+                            <button className="btn-checkbox-soon"></button>
                             {item.data.name}
                           </div>
                           <button
-                            className="btn-delete justify-self-end "
+                            className="btn-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -222,6 +222,7 @@ const ItemList = () => {
                       ))}
                 </FlipMove>
               </ul>
+              <div className="item-list-rule"></div>
             </>
           )}
           <Nav currentPage={currentPage} />
