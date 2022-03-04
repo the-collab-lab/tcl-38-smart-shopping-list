@@ -29,7 +29,7 @@
   }
 
   .outer-box {
-    @apply w-4/5 mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
+    @apply w-4/5 max-w-sm mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
   }
 
   .inner-box {
