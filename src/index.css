@@ -22,7 +22,7 @@
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
   }
   .btn-forth {
-    @apply h-6 w-6 bg-transparent border-solid border-1;
+    @apply h-6 w-16 border-solid border-1;
   }
   .logo {
     @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;

@@ -125,16 +125,17 @@ const AddItem = () => {
 
             <button
               type="submit"
-              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-white -mb-8 "
+              // className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-white -mb-8 "
+              className="btn-primary text-white/80 text-1xl m-auto w-2/5 p-1 mt-1"
             >
               Add Item
             </button>
           </form>
-          <img
+          {/* <img
             src={question}
             alt="question mark"
             className="max-h-40 -mt-40 scale-75"
-          />
+          /> */}
           <Nav currentPage={currentPage} />
           {message && <p>{message}</p>}
         </div>
