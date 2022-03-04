@@ -5,7 +5,7 @@ import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
 import Home from './pages/Home';
 import Frontis from './pages/Frontis';
-import HowToUse from './pages/About';
+import About from './pages/About';
 
 // import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';
@@ -25,11 +25,12 @@ function App() {
                 <div className="main-content">
                   <Routes>
                     <Route element={<Frontis />} path="/" />
-                    <Route element={<HowToUse />} path="/about" />
+                    <Route element={<About />} path="/about" />
                     <Route
                       path="/home"
                       element={!token ? <Home /> : <ItemList />}
                     />
+                    <Route path="/about" element={<About />} />
                     <Route
                       element={
                         <PrivateRoute>
