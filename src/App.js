@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddItem from './components/AddItem';
 import ItemList from './components/ItemList';
 import Home from './pages/Home';
-import Frontis from './components/Frontis';
-import HowToUse from './components/HowToUse';
+import Frontis from './pages/Frontis';
+import HowToUse from './pages/About';
 
 // import Nav from './components/Nav';
 import { TokenProvider } from './context/TokenContext';

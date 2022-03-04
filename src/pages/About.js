@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
-
-const HowToUse = () => {
+import carrot from '../assets/carrot.png';
+const About = () => {
   return (
     <>
       <img
@@ -15,7 +15,7 @@ const HowToUse = () => {
       />
       <div className="outer-box">
         <div className="inner-box">
-          <div className="mx-auto w-[80%] bg-transparent overflow-y-auto h-[80%] mt-[1%] scrollbar-hide">
+          <div className="mx-auto w-[80%] bg-transparent overflow-y-auto h-[77%] mt-[1%]">
             <h4 className="text-3xl text-green-500/70 uppercase tracking-wide mt-[10%] -mb-[3%]">
               how to use
             </h4>
@@ -76,6 +76,7 @@ const HowToUse = () => {
             <a href="https://github.com/diyanamendoza">
               <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
+            <img src={carrot} className="carrot" alt="down arrow" />
             <Link to="/home" className="btn-secondary  ">
               home
             </Link>
@@ -86,4 +87,4 @@ const HowToUse = () => {
   );
 };
 
-export default HowToUse;
+export default About;

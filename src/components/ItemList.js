@@ -213,7 +213,7 @@ const ItemList = () => {
                               />{' '}
                               <img
                                 src={green}
-                                className="hidden w-7 h-7 opacity-80"
+                                className="hidden w-6 h-6 opacity-60"
                                 alt="green checkbox"
                               />
                               <div className="btn-checkbox-soon"> </div>
@@ -230,7 +230,7 @@ const ItemList = () => {
                             <img
                               src={ored}
                               alt="red delete active"
-                              className=" w-7 h-7 opacity-60"
+                              className=" w-6 h-6 hidden opacity-50 "
                             />
                           </li>
                         ))}
