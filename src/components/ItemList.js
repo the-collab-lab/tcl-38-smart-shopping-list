@@ -143,92 +143,94 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 flex justify-between w-full flex-col">
-                <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 mt-[5%]">
-                  soon
-                </p>
-                <FlipMove
-                  delay={100}
-                  duration={500}
-                  staggerDelayBy={20}
-                  enterAnimation={'elevator'}
-                  leaveAnimation={'elevator'}
-                >
-                  {filteredResults
-                    ? filteredResults.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className="flex justify-between text-2xl"
-                        >
-                          {' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                            className="btn-delete"
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="btn-delete"
-                            type="checkbox"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
+              <div className="mx-auto w-[80%] bg-transparent overflow-y-auto h-[80%] mt-[1%] scrollbar-hide">
+                <ul className="list-none p-0 flex justify-between w-full flex-col">
+                  <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 mt-[5%]">
+                    soon
+                  </p>
+                  <FlipMove
+                    delay={100}
+                    duration={500}
+                    staggerDelayBy={20}
+                    enterAnimation={'elevator'}
+                    leaveAnimation={'elevator'}
+                  >
+                    {filteredResults
+                      ? filteredResults.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
                             }
-                          ></button>
-                        </li>
-                      ))
-                    : docs.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
-                        >
-                          <div className="list flex">
+                            className="flex justify-between text-2xl"
+                          >
+                            {' '}
                             <input
                               aria-label="purchase item"
                               type="checkbox"
                               onChange={() => handleChecked(item.id, item)}
                               checked={within24Hours(item)}
                               disabled={within24Hours(item)}
-                              className="checkbox opacity-0 absolute h-8 w-8 "
+                              className="btn-delete"
                             />{' '}
-                            <img
-                              src={green}
-                              className="fill-current hidden w-7 h-7 opacity-80"
-                              alt="green checkbox"
-                            />
-                            <div className="btn-checkbox-soon"></div>
                             {item.data.name}
-                          </div>
-                          <button
-                            className="btn-delete"
-                            type="button"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
+                            <button
+                              className="btn-delete"
+                              type="checkbox"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                          </li>
+                        ))
+                      : docs.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
                             }
-                          ></button>
-                        </li>
-                      ))}
-                </FlipMove>
-              </ul>
-              <div className="item-list-rule"></div>
+                            className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
+                          >
+                            <div className="list flex">
+                              <input
+                                aria-label="purchase item"
+                                type="checkbox"
+                                onChange={() => handleChecked(item.id, item)}
+                                checked={within24Hours(item)}
+                                disabled={within24Hours(item)}
+                                className="checkbox opacity-0 absolute h-8 w-8 "
+                              />{' '}
+                              <img
+                                src={green}
+                                className="hidden w-7 h-7 opacity-80"
+                                alt="green checkbox"
+                              />
+                              <div className="btn-checkbox-soon"> </div>
+                              {item.data.name}
+                            </div>
+                            <button
+                              className="btn-delete"
+                              type="button"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                          </li>
+                        ))}
+                  </FlipMove>
+                </ul>
+                <div className="item-list-rule"></div>
+              </div>
             </>
           )}
           <Nav currentPage={currentPage} />

@@ -30,11 +30,11 @@
   .btn-checkbox-not-soon {
     @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-sky-400/60 mr-4;
   }
-  input:checked + div {
-    @apply hidden border-none opacity-0;
-  }
   input:checked + img {
-    @apply block z-10;
+    @apply block z-40 mr-3.5;
+  }
+  input:checked + img + div {
+    @apply hidden;
   }
 
   .logo {
