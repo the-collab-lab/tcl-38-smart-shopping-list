@@ -22,8 +22,11 @@
   .btn-third {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
   }
+  .btn-nav {
+    @apply absolute text-white/60 text-xs uppercase tracking-wide no-underline hover:text-green-500/60 top-[86%] leading-none text-center;
+  }
   .btn-about {
-    @apply absolute text-white/60 text-xs uppercase tracking-wide no-underline hover:text-green-500/60 right-[5%] top-[86%] leading-none text-center;
+    @apply right-[5%];
   }
 
   .btn-token {

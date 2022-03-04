@@ -23,22 +23,25 @@ export default function Nav(props) {
   };
   return (
     <nav>
-      <NavLink to="/about" className="btn-about">
+      <NavLink to="/about" className="btn-nav btn-about">
         how <br />
         to use
       </NavLink>
       {hasToken && (
         <>
-          <button onClick={handleCopyClick} className=" btn-about btn-token">
+          <button onClick={handleCopyClick} className="  btn-nav btn-token">
             Share <br />
             Token
           </button>
           {props.currentPage === 'item-list' ? (
-            <NavLink to="/add-item" className="btn-secondary  item-list">
+            <NavLink
+              to="/add-item"
+              className="btn-secondary btn-primary item-list"
+            >
               Add Item
             </NavLink>
           ) : (
-            <NavLink to="/list" className="btn-secondary   add-item">
+            <NavLink to="/list" className="btn-secondary btn-primary add-item">
               Item List
             </NavLink>
           )}
