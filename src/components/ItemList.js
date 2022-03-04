@@ -92,7 +92,7 @@ const ItemList = () => {
         alt="Logo: Welcome to Your Smart Shopping List"
         className="logo"
       />
-      <div className="outer-box">
+      <div className="outer-box md:w-11/12">
         <div className="inner-box">
           {loading && <p>Loading ...</p>}
 
@@ -117,7 +117,7 @@ const ItemList = () => {
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
+                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[12%] md:w-64"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
@@ -133,78 +133,81 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
-                <FlipMove
-                  delay={100}
-                  duration={500}
-                  staggerDelayBy={20}
-                  enterAnimation={'elevator'}
-                  leaveAnimation={'elevator'}
-                >
-                  {filteredResults
-                    ? filteredResults.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className={itemStatus(item).replace(/\s+/g, '')}
-                        >
-                          {' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="checkbox checked"
-                            type="checkbox"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
+              <ul className="list-none p-0 flex flex-col">
+                <div className="grid grid-cols-1 gap-0 md:grid-cols-4">
+                  <FlipMove
+                    delay={100}
+                    duration={500}
+                    staggerDelayBy={20}
+                    enterAnimation={'elevator'}
+                    leaveAnimation={'elevator'}
+                  >
+                    {filteredResults
+                      ? filteredResults.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
                             }
-                          ></button>
-                        </li>
-                      ))
-                    : docs.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className={itemStatus(item).replace(/\s+/g, '')}
-                        >
-                          {' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="btn-third  "
-                            type="button"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
+                            // className={itemStatus(item).replace(/\s+/g, '')}
+                            className="overflow-y-auto overflow-hidden"
+                          >
+                            {' '}
+                            <input
+                              aria-label="purchase item"
+                              type="checkbox"
+                              onChange={() => handleChecked(item.id, item)}
+                              checked={within24Hours(item)}
+                              disabled={within24Hours(item)}
+                            />{' '}
+                            {item.data.name}
+                            <button
+                              className="checkbox checked"
+                              type="checkbox"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                          </li>
+                        ))
+                      : docs.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
                             }
-                          ></button>
-                        </li>
-                      ))}
-                </FlipMove>
+                            className={itemStatus(item).replace(/\s+/g, '')}
+                          >
+                            {' '}
+                            <input
+                              aria-label="purchase item"
+                              type="checkbox"
+                              onChange={() => handleChecked(item.id, item)}
+                              checked={within24Hours(item)}
+                              disabled={within24Hours(item)}
+                            />{' '}
+                            {item.data.name}
+                            <button
+                              className="btn-third  "
+                              type="button"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                          </li>
+                        ))}
+                  </FlipMove>
+                </div>
               </ul>
             </>
           )}

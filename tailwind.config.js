@@ -21,9 +21,19 @@ module.exports = {
         6: '6px',
         8: '8px',
       },
+      colors: {
+        'green-soon': '#8ad66f',
+        'yellow-kinda-soon': '#f5fa0f',
+        'blue-not-soon': '#4ec5f8',
+        'grey-inactive': '#969696',
+      },
       fontSize: {
         xs: '1.25rem',
         sm: '1.7rem',
+      },
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        'item-list': '200px minmax(900px, 1fr) 100px',
       },
     },
   },
