@@ -204,7 +204,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third  "
+                            className="btn-delete  "
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>

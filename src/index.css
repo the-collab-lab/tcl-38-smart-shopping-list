@@ -19,7 +19,7 @@
     @apply absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2;
   }
 
-  .btn-third {
+  .btn-delete {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
   }
   .btn-nav {
