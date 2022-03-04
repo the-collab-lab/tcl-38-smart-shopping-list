@@ -99,7 +99,10 @@ const AddItem = () => {
 
               {frequencyOptions.map(({ id, value, message }, index) => {
                 return (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    className="cursor-pointer hover:text-green-500 disabled:opacity-0.3"
+                  >
                     <input
                       type="radio"
                       id={id}
@@ -122,7 +125,7 @@ const AddItem = () => {
 
             <button
               type="submit"
-              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent -mb-8 "
+              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-white -mb-8 "
             >
               Add Item
             </button>

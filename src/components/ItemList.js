@@ -133,7 +133,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
+              <ul className="list-none p-0">
                 <FlipMove
                   delay={100}
                   duration={500}
