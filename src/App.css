@@ -25,7 +25,16 @@ ul {
 } */
 
 /* ///////// updated with new colors, headings not words /////////// */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 .soon {
   color: #8ad66f;
 }
@@ -53,7 +62,19 @@ ul {
   letter-spacing: 1px;
   line-height: 1.65;
 }
-
+.frontis:hover,
+.frontis:active {
+  color: #8ad66f;
+}
+.yellow {
+  color: #f5fa0f;
+}
+.green {
+  color: #8ad66f;
+}
+.blue {
+  color: #4ec5f8;
+}
 /* ///////// colors not yet used  /////////// */
 
 .delete {
@@ -61,4 +82,7 @@ ul {
 }
 .inactive-words {
   color: rgba(255, 255, 255, 0.6);
+}
+.soft-green {
+  color: #8daf81;
 }

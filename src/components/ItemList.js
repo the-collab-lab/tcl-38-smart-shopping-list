@@ -97,8 +97,17 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <p>
-              No items yet! <Link to="/add-item">Add some.</Link>
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
+              <div className="frontis-rule"></div>
+              No items yet!
+              <div className="frontis-rule"></div>
+              <Link
+                to="/add-item"
+                className="text-3xl text-white/80 uppercase tracking-wide no-underline mt-10 frontis"
+              >
+                Add some.
+              </Link>
+              <div className="frontis-rule"></div>
             </p>
           )}
 
@@ -107,7 +116,7 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
                 >
                   Filter Items
                 </label>
@@ -122,7 +131,7 @@ const ItemList = () => {
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+                  className="btn-primary text-white/60 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>

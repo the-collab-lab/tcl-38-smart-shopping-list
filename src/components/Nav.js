@@ -23,7 +23,10 @@ export default function Nav(props) {
   };
   return (
     <nav>
-      <NavLink to="/about">About</NavLink>
+      <NavLink to="/about" className="btn-about">
+        how <br />
+        to use
+      </NavLink>
       {hasToken && (
         <>
           <button onClick={handleCopyClick}>Share Token</button>

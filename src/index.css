@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Courier+Prime:ital@0;1&display=swap');
 
 @layer base {
   html {
@@ -15,21 +15,38 @@
     @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
   }
   .btn-secondary {
-    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
+    @apply text-xl w-[45%] m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
     absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
   }
   .btn-third {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
+  }
+  .btn-about {
+    @apply absolute text-white/60 text-xs uppercase tracking-wide no-underline hover:text-green-500/60 left-[5%] top-[86%] leading-none text-center;
   }
   .logo {
     @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;
   }
 
   .outer-box {
-    @apply w-4/5 mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
+    @apply w-4/5 max-w-sm mx-auto border-solid border-white/50 absolute left-1/2 transform -translate-x-1/2 top-1/2 -mt-40 h-[64%];
   }
 
   .inner-box {
     @apply m-0.5 border-2 border-dotted relative border-white/50 h-[98.5%];
+  }
+  .frontis-rule {
+    @apply mx-auto border-3 border-dotted border-white/50 w-1 h-20 mb-[5%] mt-[5%] border-l-transparent border-t-transparent border-b-transparent;
+  }
+
+  .how-to {
+    @apply text-center font-Courier leading-loose text-white/80;
+  }
+  .team-name {
+    @apply text-white/70 uppercase uppercase tracking-[.65em] text-base mb-3 leading-relaxed;
+  }
+  .carrot {
+    @apply text-xl w-[45%] m-auto  bg-transparent
+    absolute left-1/2 transform -translate-x-[55%] top-[77%] -translate-y-1/2;
   }
 }

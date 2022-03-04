@@ -4,7 +4,9 @@ module.exports = {
     extend: {
       fontFamily: {
         Amatic: ['Amatic SC', 'cursive'],
+        Courier: ['Courier Prime', 'monospace'],
       },
+
       backgroundImage: {
         chalkboard: "url('./assets/chalkboard.jpg')",
       },
@@ -24,6 +26,7 @@ module.exports = {
       fontSize: {
         xs: '1.25rem',
         sm: '1.7rem',
+        base: '1.1rem',
       },
     },
   },
