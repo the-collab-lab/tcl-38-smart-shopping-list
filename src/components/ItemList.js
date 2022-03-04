@@ -198,16 +198,18 @@ const ItemList = () => {
                           }
                           className="text-sm text-white/80 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
-                          {/* flex justify-between  */}{' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                            className="checkbox opacity-0 absolute h-8 w-8 "
-                          />{' '}
-                          {item.data.name}
+                          <div className="list">
+                            <input
+                              aria-label="purchase item"
+                              type="checkbox"
+                              onChange={() => handleChecked(item.id, item)}
+                              checked={within24Hours(item)}
+                              disabled={within24Hours(item)}
+                              className="checkbox opacity-0 absolute h-8 w-8 "
+                            />{' '}
+                            <button className="btn-checkbox justify-self-end "></button>
+                            {item.data.name}
+                          </div>
                           <button
                             className="btn-delete justify-self-end "
                             type="button"

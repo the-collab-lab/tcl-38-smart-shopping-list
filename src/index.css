@@ -21,8 +21,8 @@
   .btn-delete {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
   }
-  .checkbox {
-    @apply rounded-full h-6 w-6 bg-none border-solid border-4 border-red-400/60 mr-3;
+  .btn-checkbox {
+    @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-green-400/60 mr-4;
   }
 
   .logo {
