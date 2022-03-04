@@ -103,7 +103,7 @@ const ItemList = () => {
               <div className="frontis-rule"></div>
               <Link
                 to="/add-item"
-                className="text-3xl text-white/80 uppercase tracking-wide no-underline mt-10 frontis"
+                className="text-3xl text-white/70 uppercase tracking-wide no-underline mt-10 frontis"
               >
                 Add some.
               </Link>
@@ -116,7 +116,7 @@ const ItemList = () => {
               <form className=" ">
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/70"
                 >
                   Filter Items
                 </label>
@@ -126,12 +126,12 @@ const ItemList = () => {
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
+                  className="btn-primary text-white/70  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+                  className="btn-primary text-white/50 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>
@@ -143,7 +143,7 @@ const ItemList = () => {
                 ></button>
               </form>
               <ul className="list-none p-0 flex justify-between w-full flex-col">
-                <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400">
+                <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 mt-[5%]">
                   soon
                 </p>
                 <FlipMove
@@ -196,7 +196,7 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
-                          className="text-sm text-white/80 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
+                          className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
                           <div className="list">
                             <input

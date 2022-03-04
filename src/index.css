@@ -12,10 +12,10 @@
 
 @layer components {
   .btn-primary {
-    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/70 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
   }
   .btn-secondary {
-    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
+    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/70 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
     absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
   }
   .btn-delete {
@@ -46,7 +46,7 @@
     @apply mx-auto border-3 border-dotted border-white/50 w-1 h-20 mb-[5%] mt-[5%] border-l-transparent border-t-transparent border-b-transparent;
   }
   .item-list-rule {
-    @apply mx-auto border-3 border-dotted border-white/50 w-[90%] h-20 mb-[5%] mt-[5%] border-l-transparent border-r-transparent border-b-transparent;
+    @apply mx-auto border-3 border-dotted border-white/50 w-[85%] h-20 mb-[5%] mt-[5%] border-l-transparent border-r-transparent border-b-transparent;
   }
 
   .how-to {

@@ -78,7 +78,7 @@ const AddItem = () => {
           <form onSubmit={handleSubmit} className="">
             <label
               htmlFor="item-name"
-              className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+              className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/70"
             >
               Add Item
             </label>
@@ -88,7 +88,7 @@ const AddItem = () => {
               type="text"
               name="item-name"
               value={itemName}
-              className="btn-primary text-white/80 text-2xl mt-9 w-[80%]"
+              className="btn-primary text-white/70 text-2xl mt-9 w-[80%]"
               onChange={({ target }) => setItemName(target.value)}
             />
             <fieldset className="border-0 p-0">
