@@ -65,7 +65,7 @@ const Home = () => {
             </label>
             <br />
             <input
-              className="btn-primary text-white/80 hover:border-transparent -mb-3 text-2xl w-4/5 m-auto"
+              className="btn-primary hover:border-transparent -mb-3 text-2xl w-[80%]"
               id="shared-token"
               type="text"
               name="shared-token"
@@ -77,9 +77,9 @@ const Home = () => {
             <button
               type="submit"
               onClick={getUserToken}
-              className="btn-secondary"
+              className="btn-primary btn-secondary"
             >
-              Join an existing list
+              Join existing list
             </button>
           </form>
         </div>

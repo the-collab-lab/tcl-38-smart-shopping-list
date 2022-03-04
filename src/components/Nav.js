@@ -29,7 +29,7 @@ export default function Nav(props) {
       </NavLink>
       {hasToken && (
         <>
-          <button onClick={handleCopyClick} className="btn-token">
+          <button onClick={handleCopyClick} className=" btn-about btn-token">
             Share <br />
             Token
           </button>

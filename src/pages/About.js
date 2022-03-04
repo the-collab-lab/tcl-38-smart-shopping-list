@@ -77,7 +77,7 @@ const About = () => {
               <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <img src={carrot} className="carrot" alt="down arrow" />
-            <Link to="/home" className="btn-secondary  ">
+            <Link to="/home" className="btn-secondary btn-primary ">
               home
             </Link>
           </div>
