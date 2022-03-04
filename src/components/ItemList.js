@@ -16,6 +16,7 @@ import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import green from '../assets/green.png';
+import ored from '../assets/ored.png';
 import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
@@ -144,7 +145,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <div className="mx-auto  bg-transparent overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
+              <div className="mx-auto bg-transparent overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
                 <ul className="list-none p-0 flex justify-between w-full flex-col">
                   <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 -mt-2">
                     soon
@@ -226,6 +227,11 @@ const ItemList = () => {
                                 handleDelete(item.id, item.data.name)
                               }
                             ></button>
+                            <img
+                              src={ored}
+                              alt="red delete active"
+                              className=" w-7 h-7 opacity-60"
+                            />
                           </li>
                         ))}
                   </FlipMove>
