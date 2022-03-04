@@ -13,7 +13,7 @@ const Frontis = () => {
       <div className="frontis-rule "></div>
 
       <Link
-        to="/how-to-use"
+        to="/about"
         className="text-3xl text-white/80 uppercase tracking-wide no-underline mt-10 frontis"
       >
         don't know how to use me?

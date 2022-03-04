@@ -25,7 +25,7 @@ function App() {
                 <div className="main-content">
                   <Routes>
                     <Route element={<Frontis />} path="/" />
-                    <Route element={<HowToUse />} path="/how-to-use" />
+                    <Route element={<HowToUse />} path="/about" />
                     <Route
                       path="/home"
                       element={!token ? <Home /> : <ItemList />}
