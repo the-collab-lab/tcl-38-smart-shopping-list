@@ -30,6 +30,9 @@
   .btn-checkbox-not-soon {
     @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-sky-400/60 mr-4;
   }
+  .btn-checkbox-inactive {
+    @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-gray-400/60 mr-4;
+  }
 
   input:checked + img {
     @apply block mr-3.5;
