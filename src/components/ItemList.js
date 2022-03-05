@@ -97,7 +97,7 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>
@@ -204,7 +204,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third  "
+                            className="btn-delete  "
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -215,9 +215,9 @@ const ItemList = () => {
                       ))}
                 </FlipMove>
               </ul>
+              <Nav currentPage={currentPage} />
             </>
           )}
-          <Nav currentPage={currentPage} />
         </div>
       </div>
     </>
