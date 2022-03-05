@@ -20,6 +20,7 @@ import yellow from '../assets/yellow.png';
 import blue from '../assets/blue.png';
 import carrot from '../assets/carrot.png';
 import ored from '../assets/ored.png';
+import grey from '../assets/grey.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -179,7 +180,7 @@ const ItemList = () => {
                         className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                       >
                         {' '}
-                        <div className="list flex">
+                        <div className="list flex items-baseline">
                           <input
                             aria-label="purchase item"
                             type="checkbox"
@@ -229,7 +230,7 @@ const ItemList = () => {
                         className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                       >
                         {' '}
-                        <div className="list flex">
+                        <div className="list flex items-baseline">
                           <input
                             aria-label="purchase item"
                             type="checkbox"
@@ -279,7 +280,7 @@ const ItemList = () => {
                         className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                       >
                         {' '}
-                        <div className="list flex">
+                        <div className="list flex items-baseline">
                           <input
                             aria-label="purchase item"
                             type="checkbox"
@@ -329,7 +330,7 @@ const ItemList = () => {
                         className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                       >
                         {' '}
-                        <div className="list flex">
+                        <div className="list flex items-baseline">
                           <input
                             aria-label="purchase item"
                             type="checkbox"
@@ -339,9 +340,9 @@ const ItemList = () => {
                             className="checkbox opacity-0 absolute h-8 w-8 "
                           />{' '}
                           <img
-                            src={blue}
+                            src={grey}
                             className="hidden w-6 h-6 opacity-60"
-                            alt="blue checkbox"
+                            alt="grey checkbox"
                           />
                           <div className="btn-checkbox-inactive"> </div>
                           {item.data.name}
