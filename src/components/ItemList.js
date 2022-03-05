@@ -16,6 +16,8 @@ import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import grey from '../assets/grey.png';
+import ored from '../assets/ored.png';
+import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -143,7 +145,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
+              <ul className="list-none overflow-y-auto  scrollbar-hide h-[60%] p-0 ">
                 <FlipMove
                   delay={100}
                   duration={500}
@@ -165,22 +167,38 @@ const ItemList = () => {
                           className={itemStatus(item).replace(/\s+/g, '')}
                         >
                           {' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="checkbox checked"
-                            type="checkbox"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
-                            }
-                          ></button>
+                          <div className="flex justify-between items-baseline ">
+                            <div className="list flex items-baseline">
+                              <input
+                                aria-label="purchase item"
+                                type="checkbox"
+                                onChange={() => handleChecked(item.id, item)}
+                                checked={within24Hours(item)}
+                                disabled={within24Hours(item)}
+                                className="checkbox opacity-0 absolute h-8 w-8 "
+                              />{' '}
+                              <img
+                                src={grey}
+                                className="hidden w-6 h-6 opacity-60"
+                                alt="grey checkbox"
+                              />
+                              <div className="btn-checkbox-grey"> </div>
+                              {item.data.name}
+                            </div>
+                            <button
+                              className="btn-delete "
+                              type="checkbox"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                            <img
+                              src={ored}
+                              alt="red delete active"
+                              className=" w-6 h-6 hidden opacity-50 "
+                            />
+                          </div>
                         </li>
                       ))
                     : docs.map((item) => (
@@ -222,6 +240,11 @@ const ItemList = () => {
                                 handleDelete(item.id, item.data.name)
                               }
                             ></button>
+                            <img
+                              src={ored}
+                              alt="red delete active"
+                              className=" w-6 h-6 hidden opacity-50 "
+                            />
                           </div>
                         </li>
                       ))}
@@ -230,6 +253,7 @@ const ItemList = () => {
               <Nav currentPage={currentPage} />
             </>
           )}
+          <img src={carrot} className="carrot" alt="down arrow" />
         </div>
       </div>
     </>
