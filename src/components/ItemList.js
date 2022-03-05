@@ -251,9 +251,9 @@ const ItemList = () => {
                 </FlipMove>
               </ul>
               <Nav currentPage={currentPage} />
+              <img src={carrot} className="carrot" alt="down arrow" />
             </>
           )}
-          <img src={carrot} className="carrot" alt="down arrow" />
         </div>
       </div>
     </>
