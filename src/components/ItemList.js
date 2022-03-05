@@ -16,6 +16,7 @@ import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import green from '../assets/green.png';
+import yellow from '../assets/yellow.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -203,8 +204,10 @@ const ItemList = () => {
                       ))}
                     </div>
 
-                    <div className="bg-transparent text-yellow-kinda-soon border-dotted border-white/80 border-t-transparent md:border-b-transparent">
-                      <h1 className=" text-3xl uppercase">Kind of Soon</h1>
+                    <div className="bg-transparent text-yellow-kinda-soon border-dotted border-white/80 border-l-transparent border-r-transparent  border-t-transparent md:border-b-transparent">
+                      <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-yellow-400 -mt-2">
+                        Kind of Soon
+                      </p>
                       {kindaSoonArray.map((item) => (
                         <li
                           className="text-yellow-kinda-soon border-l-transparent md:border-r-1"
@@ -216,6 +219,7 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
+                          className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
                           {' '}
                           <input
@@ -224,17 +228,23 @@ const ItemList = () => {
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}
                             disabled={within24Hours(item)}
+                            className="checkbox opacity-0 absolute h-8 w-8 "
                           />{' '}
+                          <img
+                            src={yellow}
+                            className="hidden w-6 h-6 opacity-60"
+                            alt="yellow checkbox"
+                          />
+                          <div className="btn-checkbox-soon"> </div>
                           {item.data.name}
                           <button
+                            className="btn-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
                               handleDelete(item.id, item.data.name)
                             }
-                          >
-                            Delete
-                          </button>
+                          ></button>
                         </li>
                       ))}
                     </div>
