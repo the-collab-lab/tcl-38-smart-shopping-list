@@ -158,41 +158,10 @@ const ItemList = () => {
                     enterAnimation={'elevator'}
                     leaveAnimation={'elevator'}
                   >
-                    {/* {filteredResults
-                      ? filteredResults.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                item,
-                              )}`
-                          }
-                          className="overflow-y-auto overflow-hidden"
-                        >
-                          {' '}
-                          <input
-                            aria-label={`purchase ${item.data.name}`}
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="checkbox checked"
-                            type="checkbox"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
-                            }
-                          ></button>
-                        </li>
-                      ))
-                      : */}
+                    {/* GRID START */}
 
                     <div className="grid gap-0 grid-cols-1 md:grid-cols-4">
+                      {/* SOON LIST ARRAY */}
                       <div className="bg-transparent text-green-soon border-dotted border-white/80 border-t-transparent border-r-2 border-l-transparent md:border-dotted md:border-b-transparent md:border-r-2">
                         <h1 className="text-3xl uppercase">Soon</h1>
                         {soonArray.map((item) => (
@@ -225,10 +194,10 @@ const ItemList = () => {
                             >
                               Delete
                             </button>
-                            {/* {(itemStatus(data) === "soon") && <p>{data.name}</p>} */}
                           </li>
                         ))}
                       </div>
+                      {/* KIND OF SOON LIST ARRAY */}
 
                       <div className="bg-transparent text-yellow-kinda-soon border-dotted border-white/80 border-t-transparent border-l-transparent md:border-r-2 md:border-b-transparent">
                         <h1 className=" text-3xl uppercase">Kind of Soon</h1>
@@ -265,6 +234,9 @@ const ItemList = () => {
                           </li>
                         ))}
                       </div>
+
+                      {/* NOT SOON LIST ARRAY */}
+
                       <div className="bg-transparent text-blue-not-soon border-dotted border-white/80 border-t-transparent border-l-transparent md:border-r-2 md:border-b-transparent">
                         <h1 className="text-3xl uppercase">Not Soon</h1>
                         {notSoonArray.map((item) => (
@@ -300,6 +272,9 @@ const ItemList = () => {
                           </li>
                         ))}
                       </div>
+
+                      {/* INACTIVE LIST ARRAY */}
+
                       <div className="bg-transparent text-grey-inactive border-dotted border-transparent">
                         <h1 className="text-3xl uppercase">Inactive</h1>
                         {inactiveArray.map((item) => (
@@ -337,36 +312,7 @@ const ItemList = () => {
                       </div>
                     </div>
 
-                    {/* // aria-label={ */}
-                    {/* //   itemStatus(item) === 'inactive'
-                        //     ? `${item.data.name} is inactive`
-                        //     : `Need to buy ${item.data.name} ${itemStatus( */}
-                    {/* //       item,
-                        //     )}`
-                        // }
-                        // className={itemStatus(item).replace(/\s+/g, '')}
-                        /> */}
-                    {/* {' '}
-                        <input
-                          aria-label={`purchase ${item.data.name}`}
-                          type="checkbox"
-                          onChange={() => handleChecked(item.id, item)}
-                          checked={within24Hours(item)}
-                          disabled={within24Hours(item)}
-                        />{' '}
-                        {item.data.name}
-                        <button
-                          className="btn-third  "
-                          type="button"
-                          aria-label={`delete ${item.data.name}`}
-                          onClick={() =>
-                            handleDelete(item.id, item.data.name)
-                          }
-                        ></button>
-                        </li> */}
-                    {/* /> */}
-
-                    {/* // ))} */}
+                    {/* GRID END */}
                   </FlipMove>
                 </ul>
               </div>
