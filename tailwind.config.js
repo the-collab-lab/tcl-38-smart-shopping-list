@@ -31,10 +31,6 @@ module.exports = {
         xs: '1.25rem',
         sm: '1.7rem',
       },
-      gridTemplateColumns: {
-        // Complex site-specific column configuration
-        'item-list': '200px minmax(900px, 1fr) 100px',
-      },
     },
   },
   plugins: [],
