@@ -6,53 +6,56 @@ import ItemList from './components/ItemList';
 import Home from './pages/Home';
 import Frontis from './pages/Frontis';
 import About from './pages/About';
-
-// import Nav from './components/Nav';
-import { TokenProvider } from './context/TokenContext';
+import useFirebaseSnapshot from './hooks/useFirebaseSnapshot';
 import PrivateRoute from './components/PrivateRoute';
+import { useToken } from './context/TokenContext';
 
 function App() {
-  let token;
-  token = localStorage.getItem('token');
+  const { docs, loading } = useFirebaseSnapshot();
+  const { hasToken } = useToken();
 
   return (
     <div className="box-border">
       <div className="text-white bg-cover bg-fixed bg-chalkboard m-0 p-0 font-normal overflow-hidden mx-auto text-center font-Amatic">
         <div className="h-screen w-screen flex flex-col items-center">
-          <TokenProvider>
-            <div className="App">
-              <Router>
-                <div className="main-content">
-                  <Routes>
-                    <Route element={<Frontis />} path="/" />
-                    <Route element={<About />} path="/about" />
-                    <Route
-                      path="/home"
-                      element={!token ? <Home /> : <ItemList />}
-                    />
-                    <Route path="/about" element={<About />} />
-                    <Route
-                      element={
-                        <PrivateRoute>
-                          <ItemList />
-                        </PrivateRoute>
-                      }
-                      path="/list"
-                    />
-                    <Route
-                      element={
-                        <PrivateRoute>
-                          <AddItem />
-                        </PrivateRoute>
-                      }
-                      path="/add-item"
-                    />
-                  </Routes>
-                </div>
-                {/* <Nav /> */}
-              </Router>
-            </div>
-          </TokenProvider>
+          <div className="App">
+            <Router>
+              <div className="main-content">
+                <Routes>
+                  <Route element={<Frontis />} path="/" />
+                  <Route element={<About />} path="/about" />
+                  <Route
+                    path="/home"
+                    element={
+                      !hasToken ? (
+                        <Home />
+                      ) : (
+                        <ItemList docs={docs} loading={loading} />
+                      )
+                    }
+                  />
+                  <Route path="/about" element={<About />} />
+                  <Route
+                    element={
+                      <PrivateRoute>
+                        <ItemList docs={docs} loading={loading} />
+                      </PrivateRoute>
+                    }
+                    path="/list"
+                  />
+                  <Route
+                    element={
+                      <PrivateRoute>
+                        <AddItem docs={docs} />
+                      </PrivateRoute>
+                    }
+                    path="/add-item"
+                  />
+                </Routes>
+              </div>
+              {/* <Nav /> */}
+            </Router>
+          </div>
         </div>
       </div>
     </div>
