@@ -6,6 +6,9 @@ import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
 import carrot from '../assets/carrot.png';
 const About = () => {
+  let token;
+  token = localStorage.getItem('token');
+  console.log('token', token);
   return (
     <>
       <img
@@ -15,7 +18,7 @@ const About = () => {
       />
       <div className="outer-box">
         <div className="inner-box">
-          <div className="mx-auto w-[80%] bg-transparent overflow-y-auto h-[77%] mt-[1%]">
+          <div className="mx-auto w-[80%] bg-transparent overflow-y-auto  scrollbar-hide h-[77%] mt-[1%]">
             <h4 className="text-3xl text-green-500/70 uppercase tracking-wide mt-[10%] -mb-[3%]">
               how to use
             </h4>
