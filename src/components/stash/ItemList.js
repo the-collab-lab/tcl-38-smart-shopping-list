@@ -15,7 +15,6 @@ import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
-import grey from '../assets/grey.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -98,7 +97,7 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>
@@ -109,7 +108,7 @@ const ItemList = () => {
                 Add some.
               </Link>
               <div className="frontis-rule"></div>
-            </div>
+            </p>
           )}
 
           {docs.length > 0 && (
@@ -196,33 +195,22 @@ const ItemList = () => {
                           className={itemStatus(item).replace(/\s+/g, '')}
                         >
                           {' '}
-                          <div className="flex justify-between items-baseline ">
-                            <div className="list flex items-baseline">
-                              <input
-                                aria-label="purchase item"
-                                type="checkbox"
-                                onChange={() => handleChecked(item.id, item)}
-                                checked={within24Hours(item)}
-                                disabled={within24Hours(item)}
-                                className="checkbox opacity-0 absolute h-8 w-8 "
-                              />{' '}
-                              <img
-                                src={grey}
-                                className="hidden w-6 h-6 opacity-60"
-                                alt="green checkbox"
-                              />
-                              <div className="btn-checkbox-grey"> </div>
-                              {item.data.name}
-                            </div>
-                            <button
-                              className="btn-delete  "
-                              type="button"
-                              aria-label={`delete ${item.data.name}`}
-                              onClick={() =>
-                                handleDelete(item.id, item.data.name)
-                              }
-                            ></button>
-                          </div>
+                          <input
+                            aria-label="purchase item"
+                            type="checkbox"
+                            onChange={() => handleChecked(item.id, item)}
+                            checked={within24Hours(item)}
+                            disabled={within24Hours(item)}
+                          />{' '}
+                          {item.data.name}
+                          <button
+                            className="btn-delete  "
+                            type="button"
+                            aria-label={`delete ${item.data.name}`}
+                            onClick={() =>
+                              handleDelete(item.id, item.data.name)
+                            }
+                          ></button>
                         </li>
                       ))}
                 </FlipMove>

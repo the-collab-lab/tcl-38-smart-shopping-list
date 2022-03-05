@@ -18,6 +18,35 @@
   .btn-secondary {
     @apply absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2;
   }
+  .btn-delete {
+    @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
+  }
+  .btn-checkbox-soon {
+    @apply rounded-full h-5 w-5 bg-transparent border-solid border-1 border-green-400/60 mr-4;
+  }
+  .btn-checkbox-grey {
+    @apply rounded-full h-5 w-5 bg-transparent border-solid border-1 border-gray-400/60 mr-4;
+  }
+  .btn-checkbox-maybe-soon {
+    @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-yellow-400/60 mr-4;
+  }
+  .btn-checkbox-not-soon {
+    @apply rounded-full h-6 w-6 bg-transparent border-solid border-1 border-sky-400/60 mr-4;
+  }
+
+  input:checked + img {
+    @apply block mr-3.5;
+  }
+  input:checked + img + div {
+    @apply hidden;
+  }
+
+  button:active + img {
+    @apply block;
+  }
+  button:active {
+    @apply hidden;
+  }
 
   .btn-delete {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
@@ -45,6 +74,9 @@
   }
   .frontis-rule {
     @apply mx-auto border-3 border-dotted border-white/50 w-1 h-20 mb-[5%] mt-[5%] border-l-transparent border-t-transparent border-b-transparent;
+  }
+  .item-list-rule {
+    @apply mx-auto border-3 border-dotted border-white/50 w-[85%] h-1 mb-[5%] mt-[5%] border-l-transparent border-r-transparent border-b-transparent;
   }
 
   .how-to {

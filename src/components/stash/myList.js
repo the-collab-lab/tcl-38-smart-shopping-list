@@ -15,7 +15,9 @@ import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
-import grey from '../assets/grey.png';
+import green from '../assets/green.png';
+import ored from '../assets/ored.png';
+import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -98,26 +100,26 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>
               <Link
                 to="/add-item"
-                className="text-3xl text-white/80 uppercase tracking-wide no-underline mt-10 frontis"
+                className="text-3xl text-white/70 uppercase tracking-wide no-underline mt-10 frontis"
               >
                 Add some.
               </Link>
               <div className="frontis-rule"></div>
-            </div>
+            </p>
           )}
 
           {docs.length > 0 && (
             <>
-              <form>
+              <form className=" ">
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/70"
                 >
                   Filter Items
                 </label>
@@ -127,12 +129,12 @@ const ItemList = () => {
                   name="filter-items"
                   value={searchInput}
                   autoComplete="off"
-                  className="btn-primary text-white/80  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
+                  className="btn-primary text-white/70  ml-4 text-2xl w-[55%] p-1.5 mt-[12%]"
                   onChange={({ target }) => filterItems(target.value)}
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/60 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+                  className="btn-primary text-white/50 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>
@@ -143,61 +145,64 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
-                <FlipMove
-                  delay={100}
-                  duration={500}
-                  staggerDelayBy={20}
-                  enterAnimation={'elevator'}
-                  leaveAnimation={'elevator'}
-                >
-                  {filteredResults
-                    ? filteredResults.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className={itemStatus(item).replace(/\s+/g, '')}
-                        >
-                          {' '}
-                          <input
-                            aria-label="purchase item"
-                            type="checkbox"
-                            onChange={() => handleChecked(item.id, item)}
-                            checked={within24Hours(item)}
-                            disabled={within24Hours(item)}
-                          />{' '}
-                          {item.data.name}
-                          <button
-                            className="checkbox checked"
-                            type="checkbox"
-                            aria-label={`delete ${item.data.name}`}
-                            onClick={() =>
-                              handleDelete(item.id, item.data.name)
+              <div className="overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
+                <ul className="p-0  ">
+                  <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 -mt-2">
+                    soon
+                  </p>
+                  <FlipMove
+                    delay={100}
+                    duration={500}
+                    staggerDelayBy={20}
+                    enterAnimation={'elevator'}
+                    leaveAnimation={'elevator'}
+                  >
+                    {filteredResults
+                      ? filteredResults.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
                             }
-                          ></button>
-                        </li>
-                      ))
-                    : docs.map((item) => (
-                        <li
-                          key={item.id}
-                          aria-label={
-                            itemStatus(item) === 'inactive'
-                              ? `${item.data.name} is inactive`
-                              : `Need to buy ${item.data.name} ${itemStatus(
-                                  item,
-                                )}`
-                          }
-                          className={itemStatus(item).replace(/\s+/g, '')}
-                        >
-                          {' '}
-                          <div className="flex justify-between items-baseline ">
-                            <div className="list flex items-baseline">
+                            className="flex justify-between text-2xl"
+                          >
+                            {' '}
+                            <input
+                              aria-label="purchase item"
+                              type="checkbox"
+                              onChange={() => handleChecked(item.id, item)}
+                              checked={within24Hours(item)}
+                              disabled={within24Hours(item)}
+                              className="btn-delete"
+                            />{' '}
+                            {item.data.name}
+                            <button
+                              className="btn-delete"
+                              type="checkbox"
+                              aria-label={`delete ${item.data.name}`}
+                              onClick={() =>
+                                handleDelete(item.id, item.data.name)
+                              }
+                            ></button>
+                          </li>
+                        ))
+                      : docs.map((item) => (
+                          <li
+                            key={item.id}
+                            aria-label={
+                              itemStatus(item) === 'inactive'
+                                ? `${item.data.name} is inactive`
+                                : `Need to buy ${item.data.name} ${itemStatus(
+                                    item,
+                                  )}`
+                            }
+                            className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
+                          >
+                            <div className="list flex">
                               <input
                                 aria-label="purchase item"
                                 type="checkbox"
@@ -207,29 +212,36 @@ const ItemList = () => {
                                 className="checkbox opacity-0 absolute h-8 w-8 "
                               />{' '}
                               <img
-                                src={grey}
+                                src={green}
                                 className="hidden w-6 h-6 opacity-60"
                                 alt="green checkbox"
                               />
-                              <div className="btn-checkbox-grey"> </div>
+                              <div className="btn-checkbox-soon"> </div>
                               {item.data.name}
                             </div>
                             <button
-                              className="btn-delete  "
+                              className="btn-delete"
                               type="button"
                               aria-label={`delete ${item.data.name}`}
                               onClick={() =>
                                 handleDelete(item.id, item.data.name)
                               }
                             ></button>
-                          </div>
-                        </li>
-                      ))}
-                </FlipMove>
-              </ul>
-              <Nav currentPage={currentPage} />
+                            <img
+                              src={ored}
+                              alt="red delete active"
+                              className=" w-6 h-6 hidden opacity-50 "
+                            />
+                          </li>
+                        ))}
+                  </FlipMove>
+                </ul>
+                <div className="item-list-rule"></div>
+              </div>
+              <img src={carrot} className="carrot" alt="down arrow" />
             </>
           )}
+          <Nav currentPage={currentPage} />
         </div>
       </div>
     </>
