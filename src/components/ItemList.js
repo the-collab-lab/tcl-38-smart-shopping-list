@@ -15,6 +15,9 @@ import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
+import green from '../assets/green.png';
+import ored from '../assets/ored.png';
+import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -121,7 +124,7 @@ const ItemList = () => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80 "
                 >
                   Filter Items
                 </label>
@@ -162,7 +165,8 @@ const ItemList = () => {
                       </p>
                       {soonArray.map((item) => (
                         <li
-                          className="  border-l-transparent md:border-r-1"
+                          className="flex justify-between text-2xl"
+                          // className="  border-l-transparent md:border-r-1"
                           key={item.id}
                           aria-label={
                             itemStatus(item) === 'inactive'
@@ -179,17 +183,22 @@ const ItemList = () => {
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}
                             disabled={within24Hours(item)}
+                            className="checkbox opacity-0 absolute h-8 w-8 "
                           />{' '}
+                          <img
+                            src={green}
+                            className="hidden w-6 h-6 opacity-60"
+                            alt="green checkbox"
+                          />
                           {item.data.name}
                           <button
+                            className="btn-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
                               handleDelete(item.id, item.data.name)
                             }
-                          >
-                            Delete
-                          </button>
+                          ></button>
                           {/* {(itemStatus(data) === "soon") && <p>{data.name}</p>} */}
                         </li>
                       ))}
