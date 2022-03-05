@@ -104,7 +104,7 @@ const AddItem = () => {
                       type="radio"
                       id={id}
                       name="buyAgain"
-                      className="invisible"
+                      // className="invisible"
                       value={value}
                       defaultChecked={!index}
                       onChange={({ target }) => setBuyAgainTime(target.value)}
@@ -122,16 +122,16 @@ const AddItem = () => {
 
             <button
               type="submit"
-              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent -mb-8 "
+              // className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent -mb-8 "
             >
               Add Item
             </button>
           </form>
-          <img
+          {/* <img
             src={question}
             alt="question mark"
             className="max-h-40 -mt-40 scale-75"
-          />
+          /> */}
           <Nav currentPage={currentPage} />
           {message && <p>{message}</p>}
         </div>

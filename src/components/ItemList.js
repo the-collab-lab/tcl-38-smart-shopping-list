@@ -17,6 +17,9 @@ import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import green from '../assets/green.png';
 import yellow from '../assets/yellow.png';
+import blue from '../assets/blue.png';
+import carrot from '../assets/carrot.png';
+import ored from '../assets/ored.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -149,7 +152,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <div className="list-none p-0 flex flex-col">
+              <div className="overflow-y-auto h-[60%] mt-[1%]">
                 <ul className="grid grid-cols-1 gap-0 md:grid-cols-4 p-0 ">
                   <FlipMove
                     delay={100}
@@ -248,8 +251,10 @@ const ItemList = () => {
                         </li>
                       ))}
                     </div>
-                    <div className="bg-transparent text-blue-not-soon border-dotted border-white/80 border-t-transparent md:border-b-transparent">
-                      <h1 className="text-3xl uppercase">Not Soon</h1>
+                    <div className="bg-transparent text-yellow-kinda-soon border-dotted border-white/80 border-l-transparent border-r-transparent  border-t-transparent md:border-b-transparent">
+                      <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-sky-400 -mt-2">
+                        Not Soon
+                      </p>
                       {notSoonArray.map((item) => (
                         <li
                           className=" border-l-transparent md:border-r-1"
@@ -261,6 +266,7 @@ const ItemList = () => {
                                   item,
                                 )}`
                           }
+                          className="text-sm text-white/60 uppercase tracking-wide no-underline mt-2 ml-[6%] mr-[6%] items-baseline flex justify-between"
                         >
                           {' '}
                           <input
@@ -269,22 +275,30 @@ const ItemList = () => {
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}
                             disabled={within24Hours(item)}
+                            className="checkbox opacity-0 absolute h-8 w-8 "
                           />{' '}
+                          <img
+                            src={blue}
+                            className="hidden w-6 h-6 opacity-60"
+                            alt="blue eckbox"
+                          />
+                          <div className="btn-checkbox-soon"> </div>
                           {item.data.name}
                           <button
+                            className="btn-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
                               handleDelete(item.id, item.data.name)
                             }
-                          >
-                            Delete
-                          </button>
+                          ></button>
                         </li>
                       ))}
                     </div>
-                    <div className="bg-transparent text-grey-inactive border-dotted border-white/80 border-t-transparent md:border-b-transparent">
-                      <h1 className="text-3xl uppercase">Inactive</h1>
+                    <div className="bg-transparent text-yellow-kinda-soon border-dotted border-white/80 border-l-transparent border-r-transparent  border-t-transparent md:border-b-transparent mb-4">
+                      <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-gray-400 -mt-2">
+                        Inactive
+                      </p>
                       {inactiveArray.map((item) => (
                         <li
                           className=" border-transparent"
@@ -323,6 +337,7 @@ const ItemList = () => {
               </div>
             </>
           )}
+          <img src={carrot} className="carrot" alt="down arrow" />
           <Nav currentPage={currentPage} />
         </div>
       </div>
