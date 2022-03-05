@@ -145,8 +145,8 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <div className="mx-auto bg-transparent overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
-                <ul className="list-none p-0 flex justify-between w-full flex-col">
+              <div className="overflow-y-auto h-[58%] mt-[1%] scrollbar-hide">
+                <ul className="p-0  ">
                   <p className="text 1xl uppercase tracking-[1em] leading-10 -mb-0 text-green-400 -mt-2">
                     soon
                   </p>
