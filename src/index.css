@@ -12,11 +12,11 @@
 
 @layer components {
   .btn-primary {
-    @apply text-xl w-3/5 m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
+    @apply text-xl w-[45%] m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline hover:border-2 hover:border-green-500/60 active:font-bold;
   }
+
   .btn-secondary {
-    @apply text-xl w-[45%] m-auto p-2 bg-transparent font-Amatic text-white/80 border-solid border-2 border-white/0 shadow-3xl uppercase tracking-wide text-center cursor-pointer no-underline
-    absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2 hover:border-2 hover:border-green-500/60 active:font-bold;
+    @apply absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2;
   }
   .btn-delete {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
@@ -45,8 +45,18 @@
     @apply hidden;
   }
 
+  .btn-delete {
+    @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
+  }
+  .btn-nav {
+    @apply absolute text-white/60 text-xs uppercase tracking-wide no-underline hover:text-green-500/60 top-[86%] leading-none text-center;
+  }
   .btn-about {
-    @apply absolute text-white/60 text-xs uppercase tracking-wide no-underline hover:text-green-500/60 left-[5%] top-[86%] leading-none text-center;
+    @apply right-[5%];
+  }
+
+  .btn-token {
+    @apply left-[5%] bg-transparent font-Amatic border-none;
   }
   .logo {
     @apply max-h-72 mx-auto ml-3 -mt-2 -mb-8;

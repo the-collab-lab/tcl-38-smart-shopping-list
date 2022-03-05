@@ -100,7 +100,7 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>

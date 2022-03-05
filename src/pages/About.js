@@ -1,10 +1,10 @@
 import React from 'react';
-import logoS from '../assets/logogreyS.png';
 import { Link } from 'react-router-dom';
-
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
+import logoS from '../assets/logogreyS.png';
 import carrot from '../assets/carrot.png';
+
 const About = () => {
   return (
     <>
@@ -77,7 +77,7 @@ const About = () => {
               <AiFillGithub className="text-white mr-3 hover:text-yellow-400" />
             </a>
             <img src={carrot} className="carrot" alt="down arrow" />
-            <Link to="/home" className="btn-secondary  ">
+            <Link to="/home" className="btn-secondary btn-primary ">
               home
             </Link>
           </div>
