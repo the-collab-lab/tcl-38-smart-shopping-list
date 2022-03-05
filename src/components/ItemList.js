@@ -153,7 +153,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <div className="overflow-y-auto h-[60%] mt-[1%]">
+              <div className="overflow-y-auto h-[60%] mt-[1%] scrollbar-hide">
                 <ul className="grid grid-cols-1 gap-0 md:grid-cols-4 p-0 ">
                   <FlipMove
                     delay={100}
@@ -168,7 +168,7 @@ const ItemList = () => {
                     </p>
                     {soonArray.map((item) => (
                       <li
-                        className="  border-l-transparent md:border-r-1"
+                        // className="  border-l-transparent md:border-r-1 "
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
@@ -218,7 +218,7 @@ const ItemList = () => {
                     </p>
                     {kindaSoonArray.map((item) => (
                       <li
-                        className="text-yellow-kinda-soon border-l-transparent md:border-r-1"
+                        // className="text-yellow-kinda-soon border-l-transparent md:border-r-1"
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
@@ -268,7 +268,7 @@ const ItemList = () => {
                     </p>
                     {notSoonArray.map((item) => (
                       <li
-                        className=" border-l-transparent md:border-r-1"
+                        // className=" border-l-transparent md:border-r-1"
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
@@ -318,7 +318,7 @@ const ItemList = () => {
                     </p>
                     {inactiveArray.map((item) => (
                       <li
-                        className=" border-transparent"
+                        // className=" border-transparent"
                         key={item.id}
                         aria-label={
                           itemStatus(item) === 'inactive'
