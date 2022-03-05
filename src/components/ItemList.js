@@ -133,7 +133,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 ">
+              <ul className="list-none p-0">
                 <FlipMove
                   delay={100}
                   duration={500}
@@ -156,6 +156,7 @@ const ItemList = () => {
                         >
                           {' '}
                           <input
+                            className="btn-forth"
                             aria-label="purchase item"
                             type="checkbox"
                             onChange={() => handleChecked(item.id, item)}
@@ -164,7 +165,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="checkbox checked"
+                            className="btn-third active:bg-red-400/60 bg-cover bg-delete"
                             type="checkbox"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -187,6 +188,7 @@ const ItemList = () => {
                         >
                           {' '}
                           <input
+                            className="btn-forth"
                             aria-label="purchase item"
                             type="checkbox"
                             onChange={() => handleChecked(item.id, item)}
@@ -195,7 +197,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third  "
+                            className="btn-third active:bg-red-400/60 bg-cover bg-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
