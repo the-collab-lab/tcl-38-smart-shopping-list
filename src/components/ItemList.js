@@ -175,7 +175,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third active:bg-red-400/60 bg-cover bg-delete"
+                            className="btn-delete active:bg-red-400/60 bg-cover bg-delete"
                             type="checkbox"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -207,7 +207,7 @@ const ItemList = () => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-third active:bg-red-400/60 bg-cover bg-delete"
+                            className="btn-delete active:bg-red-400/60 bg-cover bg-delete"
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
