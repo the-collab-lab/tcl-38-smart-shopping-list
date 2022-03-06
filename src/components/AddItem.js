@@ -91,7 +91,7 @@ const AddItem = () => {
               className="btn-primary text-white/80  text-2xl mt-9 w-[80%] md:w-72"
               onChange={({ target }) => setItemName(target.value)}
             />
-            <div className="md:flex md:flex-col md:items-center md:mx-auto md:max-w-sm md:h-[90%] md:my-[2%] md:border-2 md:border-white/50 md:border-dotted md:border-t-transparent md:border-b-transparent">
+            <div className="md:flex md:flex-col md:items-center md:mx-auto md:max-w-sm md:h-[90%] md:my-[2%]">
               <fieldset className="border-0 p-0">
                 <legend className="text-sm text-white/80 uppercase tracking-wide pt-5 mb-4">
                   How soon will
