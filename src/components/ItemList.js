@@ -15,6 +15,7 @@ import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
+import carrot from '../assets/carrot.png';
 
 const ItemList = () => {
   const { docs, loading } = useFirebaseSnapshot();
@@ -142,7 +143,7 @@ const ItemList = () => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0">
+              <ul className="list-none p-0 overflow-y-auto scrollbar-hide h-[60%] mt-[1%] ">
                 <FlipMove
                   delay={100}
                   duration={500}
@@ -218,6 +219,7 @@ const ItemList = () => {
                 </FlipMove>
               </ul>
               <Nav currentPage={currentPage} />
+              <img src={carrot} className="carrot" alt="down arrow" />
             </>
           )}
         </div>
