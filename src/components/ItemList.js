@@ -10,15 +10,13 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import FlipMove from 'react-flip-move';
-import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import carrot from '../assets/carrot.png';
 
-const ItemList = () => {
-  const { docs, loading } = useFirebaseSnapshot();
+const ItemList = ({ docs, loading }) => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
   const currentPage = 'item-list';
@@ -98,7 +96,8 @@ const ItemList = () => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
+
+            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>

@@ -2,18 +2,21 @@ import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase.js';
 import { useState, useEffect } from 'react';
 import itemStatus from '../utils/itemStatus.js';
+import { useToken } from '../context/TokenContext.js';
 
 export default function useFirebaseSnapshot() {
   const [docs, setDocs] = useState([]);
   const [loading, setLoading] = useState('');
+  const { hasToken } = useToken();
 
   useEffect(() => {
     setLoading(true);
     const token = localStorage.getItem('token');
 
-    const q = token
-      ? query(collection(db, 'shopping-list'), where('token', '==', token))
-      : query(collection(db, 'shopping-list'));
+    const q = query(
+      collection(db, 'shopping-list'),
+      where('token', '==', token),
+    );
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const items = [];
@@ -51,7 +54,7 @@ export default function useFirebaseSnapshot() {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [hasToken]);
 
   return { docs, loading };
 }
