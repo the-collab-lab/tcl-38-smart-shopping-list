@@ -124,16 +124,19 @@ const AddItem = () => {
                 })}
               </fieldset>
 
-              <button type="submit" className="btn-primary md:w-48 md:mt-[15%]">
+              <button
+                type="submit"
+                className="relative z-20 bg-black/50 border-none text-white pr-2 pl-2 text 1xl uppercase tracking-[1em] leading-10 font-Amatic mt-[18%] hover:text-green-500 "
+              >
                 Add Item
               </button>
             </div>
           </form>
-          {/* <img
+          <img
             src={question}
             alt="question mark"
-            className="max-h-40 -mt-10 scale-15"
-          /> */}
+            className="max-h-40  absolute left-[10%] top-[55%] opacity-50"
+          />
           <Nav currentPage={currentPage} />
           {message && <p className="md:text-2xl md:mb-10">{message}</p>}
         </div>
