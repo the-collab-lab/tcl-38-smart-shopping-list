@@ -86,3 +86,8 @@ ul {
 .soft-green {
   color: #8daf81;
 }
+
+.carrot {
+  z-index: -1;
+  position: absolute;
+}

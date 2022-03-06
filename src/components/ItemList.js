@@ -19,6 +19,7 @@ import carrot from '../assets/carrot.png';
 const ItemList = ({ docs, loading }) => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
+  const [statuses, setStatuses] = useState('');
   const currentPage = 'item-list';
 
   const handleChecked = async (id, item) => {
@@ -34,9 +35,7 @@ const ItemList = ({ docs, loading }) => {
         item.data['total purchases'],
       ),
       'last purchased': serverTimestamp(),
-      'total purchases': item.data['total purchases']
-        ? item.data['total purchases'] + 1
-        : 0,
+      'total purchases': item.data['total purchases'] + 1,
     });
   };
 
@@ -60,7 +59,7 @@ const ItemList = ({ docs, loading }) => {
       const name = cleanData(item.data.name);
       return name.includes(cleanData(query));
     });
-    !query ? setFilteredResults('') : setFilteredResults(results);
+    setFilteredResults(results);
   };
 
   useEffect(() => {
@@ -68,6 +67,13 @@ const ItemList = ({ docs, loading }) => {
       filterItems(searchInput);
     }
   }, [docs]);
+
+  useEffect(() => {
+    let statusArr = docs.map((item) => itemStatus(item).replace(/\s+/g, ''));
+    setStatuses(statusArr);
+  }, [docs]);
+  console.log(docs);
+  console.log(statuses);
 
   const handleClear = () => {
     setSearchInput('');
@@ -206,6 +212,8 @@ const ItemList = ({ docs, loading }) => {
                             disabled={within24Hours(item)}
                           />{' '}
                           {item.data.name}
+                          {item.data['estimated purchase interval']}
+                          {itemStatus(item)}
                           <button
                             className="btn-delete active:bg-red-400/60  bg-delete"
                             type="button"
