@@ -157,7 +157,7 @@ const ItemList = () => {
                           {' '}
                           <input
                             className="btn-forth"
-                            aria-label="purchase item"
+                            aria-label={`purchase ${item.data.name}`}
                             type="checkbox"
                             onChange={() => handleChecked(item.id, item)}
                             checked={within24Hours(item)}

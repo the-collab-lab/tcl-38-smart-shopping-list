@@ -102,7 +102,7 @@ const AddItem = () => {
                   return (
                     <div
                       key={index}
-                      className="cursor-pointer hover:text-green-500 disabled:opacity-0.3"
+                      className="cursor-pointer hover:text-green-500 hover:cursor-pointer active:text-green-700"
                     >
                       <input
                         type="radio"
@@ -135,7 +135,7 @@ const AddItem = () => {
             className="max-h-40 -mt-10 scale-15"
           /> */}
           <Nav currentPage={currentPage} />
-          {message && <p>{message}</p>}
+          {message && <p className="md:text-2xl md:mb-10">{message}</p>}
         </div>
       </div>
     </>
