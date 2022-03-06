@@ -19,7 +19,6 @@ import carrot from '../assets/carrot.png';
 const ItemList = ({ docs, loading }) => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
-  const [statuses, setStatuses] = useState('');
   const currentPage = 'item-list';
 
   const handleChecked = async (id, item) => {
@@ -66,11 +65,6 @@ const ItemList = ({ docs, loading }) => {
     if (searchInput) {
       filterItems(searchInput);
     }
-  }, [docs]);
-
-  useEffect(() => {
-    let statusArr = docs.map((item) => itemStatus(item).replace(/\s+/g, ''));
-    setStatuses(statusArr);
   }, [docs]);
 
   const handleClear = () => {
