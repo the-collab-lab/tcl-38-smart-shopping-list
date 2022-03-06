@@ -10,13 +10,14 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import FlipMove from 'react-flip-move';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
-import carrot from '../assets/carrot.png';
 
-const ItemList = ({ docs, loading }) => {
+const ItemList = () => {
+  const { docs, loading } = useFirebaseSnapshot();
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
   const currentPage = 'item-list';
@@ -96,7 +97,7 @@ const ItemList = ({ docs, loading }) => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
+            <p className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>
@@ -107,7 +108,7 @@ const ItemList = ({ docs, loading }) => {
                 Add some.
               </Link>
               <div className="frontis-rule"></div>
-            </div>
+            </p>
           )}
 
           {docs.length > 0 && (
@@ -115,7 +116,7 @@ const ItemList = ({ docs, loading }) => {
               <form>
                 <label
                   htmlFor="filter-items"
-                  className="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
+                  className="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
                 >
                   Filter Items
                 </label>
@@ -130,7 +131,7 @@ const ItemList = ({ docs, loading }) => {
                 />
                 <label
                   htmlFor="btn"
-                  className="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+                  className="btn-primary text-white/60 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
                 >
                   clear
                 </label>
@@ -141,7 +142,7 @@ const ItemList = ({ docs, loading }) => {
                   onClick={handleClear}
                 ></button>
               </form>
-              <ul className="list-none p-0 overflow-y-auto scrollbar-hide h-[60%] mt-[1%]">
+              <ul className="list-none p-0 ">
                 <FlipMove
                   delay={100}
                   duration={500}
@@ -151,38 +152,35 @@ const ItemList = ({ docs, loading }) => {
                 >
                   {filteredResults
                     ? filteredResults.map((item) => (
-                        <div className="flex flex-row justify-between'">
-                          <li
-                            key={item.id}
-                            aria-label={
-                              itemStatus(item) === 'inactive'
-                                ? `${item.data.name} is inactive`
-                                : `Need to buy ${item.data.name} ${itemStatus(
-                                    item,
-                                  )}`
+                        <li
+                          key={item.id}
+                          aria-label={
+                            itemStatus(item) === 'inactive'
+                              ? `${item.data.name} is inactive`
+                              : `Need to buy ${item.data.name} ${itemStatus(
+                                  item,
+                                )}`
+                          }
+                          className={itemStatus(item).replace(/\s+/g, '')}
+                        >
+                          {' '}
+                          <input
+                            aria-label="purchase item"
+                            type="checkbox"
+                            onChange={() => handleChecked(item.id, item)}
+                            checked={within24Hours(item)}
+                            disabled={within24Hours(item)}
+                          />{' '}
+                          {item.data.name}
+                          <button
+                            className="checkbox checked"
+                            type="checkbox"
+                            aria-label={`delete ${item.data.name}`}
+                            onClick={() =>
+                              handleDelete(item.id, item.data.name)
                             }
-                            className={itemStatus(item).replace(/\s+/g, '')}
-                          >
-                            {' '}
-                            <input
-                              aria-label={`purchase ${item.data.name}`}
-                              type="checkbox"
-                              className="btn-forth"
-                              onChange={() => handleChecked(item.id, item)}
-                              checked={within24Hours(item)}
-                              disabled={within24Hours(item)}
-                            />{' '}
-                            {item.data.name}
-                            <button
-                              className="btn-delete active:bg-red-400/60  bg-delete"
-                              type="checkbox"
-                              aria-label={`delete ${item.data.name}`}
-                              onClick={() =>
-                                handleDelete(item.id, item.data.name)
-                              }
-                            ></button>
-                          </li>
-                        </div>
+                          ></button>
+                        </li>
                       ))
                     : docs.map((item) => (
                         <li
@@ -198,7 +196,6 @@ const ItemList = ({ docs, loading }) => {
                         >
                           {' '}
                           <input
-                            className="btn-forth"
                             aria-label="purchase item"
                             type="checkbox"
                             onChange={() => handleChecked(item.id, item)}
@@ -207,7 +204,7 @@ const ItemList = ({ docs, loading }) => {
                           />{' '}
                           {item.data.name}
                           <button
-                            className="btn-delete active:bg-red-400/60  bg-delete"
+                            className="btn-delete  "
                             type="button"
                             aria-label={`delete ${item.data.name}`}
                             onClick={() =>
@@ -219,7 +216,6 @@ const ItemList = ({ docs, loading }) => {
                 </FlipMove>
               </ul>
               <Nav currentPage={currentPage} />
-              <img src={carrot} className="carrot" alt="down arrow" />
             </>
           )}
         </div>
