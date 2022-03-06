@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { collection, getDocs } from '@firebase/firestore';
+import { db } from '../lib/firebase.js';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
-import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import { useNavigate } from 'react-router-dom';
 import { useToken } from '../context/TokenContext.js';
 import logoS from '../assets/logogreyS.png';
@@ -8,10 +9,19 @@ import or from '../assets/orshade.png';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { docs } = useFirebaseSnapshot();
   const [userToken, setUserToken] = useState('');
-  const existingTokens = docs.map((doc) => doc.data.token);
   const { setHasToken } = useToken();
+
+  const getAllDocs = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'shopping-list'));
+      const snapshotDocs = [];
+      querySnapshot.forEach((doc) => snapshotDocs.push(doc.data()));
+      return snapshotDocs;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const createToken = () => {
     const newToken = getToken();
@@ -24,8 +34,10 @@ const Home = () => {
     localStorage.setItem('token', userToken);
   };
 
-  const getUserToken = (e) => {
+  const getUserToken = async (e) => {
     e.preventDefault();
+    const allDocs = await getAllDocs();
+    const existingTokens = allDocs.map((doc) => doc.token);
     if (existingTokens.includes(userToken) && userToken !== '') {
       saveToken(userToken);
       setHasToken(userToken);

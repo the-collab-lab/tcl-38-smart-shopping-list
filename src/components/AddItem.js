@@ -1,14 +1,12 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../lib/firebase.js';
-import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import question from '../assets/question.png';
 
-const AddItem = () => {
-  const { docs } = useFirebaseSnapshot();
+const AddItem = ({ docs }) => {
   const [itemName, setItemName] = useState('');
   const [message, setMessage] = useState('');
   const currentPage = 'add-item';
