@@ -19,6 +19,18 @@
     @apply absolute left-1/2 transform -translate-x-1/2 top-[90%] -translate-y-1/2;
   }
 
+  .btn-third {
+    @apply ml-10 rounded-full h-6 w-6 bg-delete border-solid border-1 border-red-400/60;
+  }
+
+  .btn-forth {
+    @apply h-6 w-6 bg-transparent border-solid border-1;
+  }
+
+  .btn-purchase {
+    @apply ml-10 rounded-full h-6 w-6 bg-purchase border-solid border-1 border-green-400/60;
+  }
+
   .btn-delete {
     @apply ml-10 rounded-full h-6 w-6 bg-transparent border-solid border-1 border-red-400/60;
   }
@@ -51,7 +63,7 @@
     @apply text-center font-Courier leading-loose text-white/80;
   }
   .team-name {
-    @apply text-white/70 uppercase uppercase tracking-[.65em] text-base mb-3 leading-relaxed;
+    @apply text-white/70 uppercase tracking-[.65em] text-base mb-3 leading-relaxed;
   }
   .carrot {
     @apply text-xl w-[45%] m-auto  bg-transparent

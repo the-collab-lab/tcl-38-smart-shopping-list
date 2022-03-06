@@ -9,6 +9,8 @@ module.exports = {
 
       backgroundImage: {
         chalkboard: "url('./assets/chalkboard.jpg')",
+        delete: "url('./assets/remove.png')",
+        purchase: "url('./assets/tick.png')",
       },
       boxShadow: {
         '3xl': '0px 0px 4px 4px rgba(255, 255, 255, 0.3)',
@@ -30,7 +32,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    // require('@tailwindcss/forms'),
+  ],
   corePlugins: {
     preflight: false,
   },
