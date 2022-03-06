@@ -10,13 +10,15 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import FlipMove from 'react-flip-move';
+import useFirebaseSnapshot from '../hooks/useFirebaseSnapshot.js';
 import cleanData from '../utils/cleanData.js';
 import itemStatus from '../utils/itemStatus.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
 import carrot from '../assets/carrot.png';
 
-const ItemList = ({ docs, loading }) => {
+const ItemList = () => {
+  const { docs, loading } = useFirebaseSnapshot();
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
   const currentPage = 'item-list';
@@ -96,7 +98,7 @@ const ItemList = ({ docs, loading }) => {
           {loading && <p>Loading ...</p>}
 
           {!docs.length && !loading && (
-            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-[20%] ">
+            <div className="text-3xl text-white/80 uppercase tracking-wide  mt-10 ">
               <div className="frontis-rule"></div>
               No items yet!
               <div className="frontis-rule"></div>
@@ -167,14 +169,15 @@ const ItemList = ({ docs, loading }) => {
                             <input
                               aria-label={`purchase ${item.data.name}`}
                               type="checkbox"
-                              className="btn-forth"
+                              className="accent-violet-500"
+                              checked
                               onChange={() => handleChecked(item.id, item)}
                               checked={within24Hours(item)}
                               disabled={within24Hours(item)}
                             />{' '}
                             {item.data.name}
                             <button
-                              className="btn-delete active:bg-red-400/60  bg-delete"
+                              className="btn-third active:bg-red-400/60 bg-delete justify-end"
                               type="checkbox"
                               aria-label={`delete ${item.data.name}`}
                               onClick={() =>
