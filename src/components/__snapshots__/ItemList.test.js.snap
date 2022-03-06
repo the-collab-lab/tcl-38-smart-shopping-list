@@ -15,7 +15,7 @@ exports[`should display a list of items 1`] = `
     >
       <form>
         <label
-          class="bg-gray-800 pr-2 pl-2 absolute left-1/2  -mt-4 text-xs uppercase tracking-wider transform -translate-x-1/2 text-white/80"
+          class="bg-gray-800 pr-2 pl-2 absolute -mt-4 text-xs uppercase tracking-wider text-white/80 "
           for="filter-items"
         >
           Filter Items
@@ -29,7 +29,7 @@ exports[`should display a list of items 1`] = `
           value=""
         />
         <label
-          class="btn-primary text-white/60 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
+          class="btn-primary text-white/80 float-right -mb-3 text-1xl w-[12%] m-auto mr-5 mt-[12%] "
           for="btn"
         >
           clear
@@ -41,7 +41,7 @@ exports[`should display a list of items 1`] = `
         />
       </form>
       <ul
-        class="list-none p-0 "
+        class="list-none p-0 overflow-y-auto scrollbar-hide h-[60%] mt-[1%]"
       >
         <div
           style="position: relative;"
@@ -53,13 +53,14 @@ exports[`should display a list of items 1`] = `
              
             <input
               aria-label="purchase item"
+              class="btn-forth"
               type="checkbox"
             />
              
             limes
             <button
               aria-label="delete limes"
-              class="btn-delete  "
+              class="btn-delete active:bg-red-400/60  bg-delete"
               type="button"
             />
           </li>
@@ -70,13 +71,14 @@ exports[`should display a list of items 1`] = `
              
             <input
               aria-label="purchase item"
+              class="btn-forth"
               type="checkbox"
             />
              
             cereal
             <button
               aria-label="delete cereal"
-              class="btn-delete  "
+              class="btn-delete active:bg-red-400/60  bg-delete"
               type="button"
             />
           </li>
@@ -105,6 +107,11 @@ exports[`should display a list of items 1`] = `
           Add Item
         </a>
       </nav>
+      <img
+        alt="down arrow"
+        class="carrot"
+        src="carrot.png"
+      />
     </div>
   </div>
 </div>

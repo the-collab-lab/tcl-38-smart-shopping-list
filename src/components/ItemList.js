@@ -34,9 +34,7 @@ const ItemList = ({ docs, loading }) => {
         item.data['total purchases'],
       ),
       'last purchased': serverTimestamp(),
-      'total purchases': item.data['total purchases']
-        ? item.data['total purchases'] + 1
-        : 0,
+      'total purchases': item.data['total purchases'] + 1,
     });
   };
 
@@ -60,7 +58,7 @@ const ItemList = ({ docs, loading }) => {
       const name = cleanData(item.data.name);
       return name.includes(cleanData(query));
     });
-    !query ? setFilteredResults('') : setFilteredResults(results);
+    setFilteredResults(results);
   };
 
   useEffect(() => {
