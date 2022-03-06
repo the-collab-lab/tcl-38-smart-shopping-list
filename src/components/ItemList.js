@@ -72,8 +72,6 @@ const ItemList = ({ docs, loading }) => {
     let statusArr = docs.map((item) => itemStatus(item).replace(/\s+/g, ''));
     setStatuses(statusArr);
   }, [docs]);
-  console.log(docs);
-  console.log(statuses);
 
   const handleClear = () => {
     setSearchInput('');
@@ -212,8 +210,6 @@ const ItemList = ({ docs, loading }) => {
                             disabled={within24Hours(item)}
                           />{' '}
                           {item.data.name}
-                          {item.data['estimated purchase interval']}
-                          {itemStatus(item)}
                           <button
                             className="btn-delete active:bg-red-400/60  bg-delete"
                             type="button"
