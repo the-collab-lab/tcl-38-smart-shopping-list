@@ -88,54 +88,52 @@ const AddItem = () => {
               type="text"
               name="item-name"
               value={itemName}
-              className="btn-primary text-white/80  text-2xl mt-9 w-[80%] md:w-72"
+              className="btn-primary text-white/80  text-2xl mt-9 w-[80%]"
               onChange={({ target }) => setItemName(target.value)}
             />
-            <div className="md:flex md:flex-col md:items-center md:mx-auto md:max-w-sm md:h-[90%] md:my-[2%] md:border-2 md:border-white/50 md:border-dotted md:border-t-transparent md:border-b-transparent">
-              <fieldset className="border-0 p-0">
-                <legend className="text-sm text-white/80 uppercase tracking-wide pt-5 mb-4">
-                  How soon will
-                  <br /> you buy this again?
-                </legend>
+            <fieldset className="border-0 p-0">
+              <legend className="text-sm text-white/80 uppercase tracking-wide pt-5 mb-4">
+                How soon will
+                <br /> you buy this again?
+              </legend>
 
-                {frequencyOptions.map(({ id, value, message }, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="cursor-pointer hover:text-green-500 hover:cursor-pointer active:text-green-700"
+              {frequencyOptions.map(({ id, value, message }, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      type="radio"
+                      id={id}
+                      name="buyAgain"
+                      className="invisible"
+                      value={value}
+                      defaultChecked={!index}
+                      onChange={({ target }) => setBuyAgainTime(target.value)}
+                    />
+                    <label
+                      htmlFor={id}
+                      className="text 1xl uppercase tracking-[1em] leading-10"
                     >
-                      <input
-                        type="radio"
-                        id={id}
-                        name="buyAgain"
-                        className="invisible"
-                        value={value}
-                        defaultChecked={!index}
-                        onChange={({ target }) => setBuyAgainTime(target.value)}
-                      />
-                      <label
-                        htmlFor={id}
-                        className="text 1xl uppercase tracking-[1em] leading-10"
-                      >
-                        {message}
-                      </label>
-                    </div>
-                  );
-                })}
-              </fieldset>
+                      {message}
+                    </label>
+                  </div>
+                );
+              })}
+            </fieldset>
 
-              <button type="submit" className="btn-primary md:w-48 md:mt-[15%]">
-                Add Item
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="relative bg-transparent border-0 z-20 w-4/5 h-40 text-transparent -mb-8 "
+            >
+              Add Item
+            </button>
           </form>
-          {/* <img
+          <img
             src={question}
             alt="question mark"
-            className="max-h-40 -mt-10 scale-15"
-          /> */}
+            className="max-h-40 -mt-40 scale-75"
+          />
           <Nav currentPage={currentPage} />
-          {message && <p className="md:text-2xl md:mb-10">{message}</p>}
+          {message && <p>{message}</p>}
         </div>
       </div>
     </>
