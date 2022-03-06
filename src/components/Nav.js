@@ -28,11 +28,11 @@ export default function Nav(props) {
         <>
           <button onClick={handleCopyClick}>Share Token</button>
           {props.currentPage === 'item-list' ? (
-            <NavLink to="/add-item" className="btn-secondary  item-list">
+            <NavLink to="/add-item" className="btn-secondary item-list md:w-48">
               Add Item
             </NavLink>
           ) : (
-            <NavLink to="/list" className="btn-secondary   add-item">
+            <NavLink to="/list" className="btn-secondary add-item md:w-48">
               Item List
             </NavLink>
           )}
