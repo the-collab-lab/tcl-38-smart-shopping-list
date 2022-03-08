@@ -100,7 +100,7 @@ const AddItem = ({ docs }) => {
                   return (
                     <div
                       key={index}
-                      className="cursor-pointer hover:text-green-500 hover:cursor-pointer active:text-green-700"
+                      className="cursor-pointer hover:text-green-500  active:text-green-700"
                     >
                       <input
                         type="radio"
@@ -124,17 +124,17 @@ const AddItem = ({ docs }) => {
 
               <button
                 type="submit"
-                className="relative z-20 bg-black/50 border-none text-white pr-2 pl-2 text 1xl uppercase tracking-[1em] leading-10 font-Amatic mt-[18%] hover:text-green-500 "
+                className="text-center relative z-20 bg-black/50 border-0 text-white pr-2 pl-7 text-xs uppercase tracking-[1em] leading-10 font-Amatic mt-[18%] hover:text-green-500 cursor-pointer"
               >
                 Add Item
               </button>
             </div>
           </form>
-          <img
+          {/* <img
             src={question}
             alt="question mark"
             className="max-h-40  absolute left-[10%] top-[55%] opacity-50"
-          />
+          /> */}
           <Nav currentPage={currentPage} />
           {message && <p className="md:text-2xl md:mb-10">{message}</p>}
         </div>
