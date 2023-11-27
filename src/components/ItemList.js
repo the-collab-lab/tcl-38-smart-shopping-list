@@ -65,6 +65,7 @@ const ItemList = ({ docs, loading }) => {
     if (searchInput) {
       filterItems(searchInput);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [docs]);
 
   const handleClear = () => {

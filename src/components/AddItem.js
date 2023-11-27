@@ -4,7 +4,6 @@ import { db } from '../lib/firebase.js';
 import cleanData from '../utils/cleanData.js';
 import Nav from './Nav';
 import logoS from '../assets/logogreyS.png';
-import question from '../assets/question.png';
 
 const AddItem = ({ docs }) => {
   const [itemName, setItemName] = useState('');
