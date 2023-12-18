@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { collection, getDocs } from '@firebase/firestore';
 import { db } from '../lib/firebase.js';
-import { getToken } from '@the-collab-lab/shopping-list-utils';
+import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
 import { useNavigate } from 'react-router-dom';
 import { useToken } from '../context/TokenContext.js';
 import logoS from '../assets/logogreyS.png';
@@ -24,10 +24,11 @@ const Home = () => {
   };
 
   const createToken = () => {
-    const newToken = getToken();
-    localStorage.setItem('token', newToken);
-    setHasToken(newToken);
-    navigate('/list');
+    // const newToken = getToken();
+    // localStorage.setItem('token', newToken);
+    // setHasToken(newToken);
+    // navigate('/list');
+    console.log('Creating new lists is no longer supported.');
   };
 
   const saveToken = () => {
@@ -100,6 +101,7 @@ const Home = () => {
             </form>
           </div>
         </div>
+        <ArchivalNoticeModal />
       </div>
     </>
   );
